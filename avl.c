@@ -6,7 +6,7 @@
  typedef struct data{
     int station;
     float associated_data;
-    int average_increment;
+    float average_increment;
  }Data;
 
 typedef struct avl{
@@ -16,10 +16,18 @@ typedef struct avl{
     int equilibre;
 }AVL;
 
+typedef struct davl{
+    struct avl * elmt;
+    struct avl * fg;
+    struct avl * fd;
+    int equilibre;
+}DAVL;
+
 typedef AVL* PAVL;
+typedef DAVL* PDAVL;
 
 void traiter(Data e) {
-    printf("%d",e.station);
+    printf("%d ",e.station);
     printf("%f ", e.associated_data);
 }
 
@@ -27,7 +35,7 @@ void traiter(Data e) {
 
 void parcoursInfixe(PAVL a) {
 if (a!=NULL) {
-   parcoursInfixe(a->fg);
+    parcoursInfixe(a->fg);
     traiter(a->elmt);
     parcoursInfixe(a->fd);
 }
@@ -64,6 +72,7 @@ PAVL creerArbre(Data e){
     noeud->fg= NULL;
     noeud->fd= NULL;
     noeud->equilibre= 0;
+    noeud->elmt.average_increment=1;
     return noeud;
 }
 
@@ -169,7 +178,7 @@ PAVL insertionAVLMax(PAVL a,Data e, int* h){
     }
     else{
         if(e.associated_data > a->elmt.associated_data){
-            a->elmt.associated_data=e.associated_data;
+            a->elmt=e;
         }
         *h=0;
         return a;
@@ -235,6 +244,7 @@ PAVL insertionAVLAverage(PAVL a,Data e, int* h){
     }
     else{
         a->elmt.associated_data=a->elmt.associated_data+e.associated_data;
+        a->elmt.average_increment=a->elmt.average_increment+1;
         *h=0;
         return a;
     }
@@ -250,18 +260,22 @@ PAVL insertionAVLAverage(PAVL a,Data e, int* h){
     return a;
     }
  
-
-
- 
+void calculateAverage(PAVL a){
+    if (a!=NULL) {
+    calculateAverage(a->fg);
+    a->elmt.associated_data=a->elmt.associated_data/a->elmt.average_increment;
+    calculateAverage(a->fd);
+    }
+}
 
 int main(int argc, char* argv[]){
-    PAVL a;
+    PAVL a,b;
     int h;
     int station;
     float associated_data;
+    int date;
     Data data;
     int argument=atoi(argv[2]);
-
     FILE* data_file=fopen(argv[1],"r+");
     if(argument==1){
         while (fscanf(data_file,"%d",&station) == 1){
@@ -286,9 +300,17 @@ int main(int argc, char* argv[]){
             data.associated_data=associated_data;
             a=insertionAVLAverage(a,data,&h);
         };
+        calculateAverage(a);
     }
-    
-   
+    else if(argument==4){
+        while (fscanf(data_file,"%d",&date) == 1){
+            fscanf(data_file,"%d",&station);
+            fscanf(data_file,"%f",&associated_data);
+            data.station=station;
+            data.associated_data=associated_data;
+            a=insertionAVLAverage(a,data,&h);
+    }
+    }
     parcoursInfixe(a);
     return 0;
 }
