@@ -26,36 +26,34 @@ typedef struct davl{
 typedef AVL* PAVL;
 typedef DAVL* PDAVL;
 
-void traiter(Data e) {
-    printf("%d ",e.station);
-    printf("%f ", e.associated_data);
+void traiter(Data e,FILE* out) {
+    fprintf(out,"%d ",e.station);
+    fprintf(out,"%f\n",e.associated_data);
 }
 
  
 
-void parcoursInfixe(PAVL a) {
+void parcoursInfixe(PAVL a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixe(a->fg);
-    traiter(a->elmt);
-    parcoursInfixe(a->fd);
+    parcoursInfixe(a->fg,out);
+    traiter(a->elmt,out);
+    parcoursInfixe(a->fd,out);
 }
 }
 
+void parcoursInfixeR(PAVL a, FILE* out) {
+if (a!=NULL) {
+    parcoursInfixeR(a->fd,out);
+    
+    traiter(a->elmt,out);
 
- 
-
-
-bool existeFilsDroit(PAVL a) {
-    return(a->fd ? true : false);
+    parcoursInfixeR(a->fg,out);
 }
-
- 
+}
 
 int max(int a, int b) {
     return(a<b ? b : a);
 }
-
- 
 
 int min(int a, int b) {
     return(a < b ? a : b);
@@ -275,9 +273,14 @@ int main(int argc, char* argv[]){
     float associated_data;
     int date;
     Data data;
-    int argument=atoi(argv[2]);
+
+    int sort_option=atoi(argv[3]);
+    int display_option=atoi(argv[4]);
+
     FILE* data_file=fopen(argv[1],"r+");
-    if(argument==1){
+    FILE* output_file=fopen(argv[2],"w");
+
+    if(sort_option==1){
         while (fscanf(data_file,"%d",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data.station=station;
@@ -285,7 +288,7 @@ int main(int argc, char* argv[]){
             a=insertionAVLMax(a,data,&h);
         }
     }
-    else if(argument==2){
+    else if(sort_option==2){
         while (fscanf(data_file,"%d",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data.station=station;
@@ -293,7 +296,7 @@ int main(int argc, char* argv[]){
             a=insertionAVLMin(a,data,&h);
         };
     }
-    else if(argument==3){
+    else if(sort_option==3){
         while (fscanf(data_file,"%d",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data.station=station;
@@ -302,7 +305,7 @@ int main(int argc, char* argv[]){
         };
         calculateAverage(a);
     }
-    else if(argument==4){
+    else if(sort_option==4){
         while (fscanf(data_file,"%d",&date) == 1){
             fscanf(data_file,"%d",&station);
             fscanf(data_file,"%f",&associated_data);
@@ -311,6 +314,11 @@ int main(int argc, char* argv[]){
             a=insertionAVLAverage(a,data,&h);
     }
     }
-    parcoursInfixe(a);
+    if(display_option==1){
+        parcoursInfixe(a,output_file);
+    }
+    else parcoursInfixeR(a,output_file);
+    fclose(data_file);
+    fclose(output_file);
     return 0;
 }
