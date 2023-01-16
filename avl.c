@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
- typedef struct data{
+typedef struct data{
     int station;
     float associated_data;
-    float average_increment;
- }Data;
+    int average_increment;
+}Data;
 
 typedef struct avl{
     Data elmt;
@@ -16,15 +16,9 @@ typedef struct avl{
     int equilibre;
 }AVL;
 
-typedef struct davl{
-    struct avl * elmt;
-    struct avl * fg;
-    struct avl * fd;
-    int equilibre;
-}DAVL;
 
 typedef AVL* PAVL;
-typedef DAVL* PDAVL;
+
 
 void traiter(Data e,FILE* out) {
     fprintf(out,"%d ",e.station);
@@ -43,10 +37,8 @@ if (a!=NULL) {
 
 void parcoursInfixeR(PAVL a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixeR(a->fd,out);
-    
+    parcoursInfixeR(a->fd,out); 
     traiter(a->elmt,out);
-
     parcoursInfixeR(a->fg,out);
 }
 }
@@ -73,6 +65,7 @@ PAVL creerArbre(Data e){
     noeud->elmt.average_increment=1;
     return noeud;
 }
+
 
 PAVL rotationGauche(PAVL a){
 
@@ -266,12 +259,13 @@ void calculateAverage(PAVL a){
     }
 }
 
+
+
 int main(int argc, char* argv[]){
-    PAVL a,b;
+    PAVL a;
     int h;
     int station;
     float associated_data;
-    int date;
     Data data;
 
     int sort_option=atoi(argv[3]);
@@ -305,15 +299,7 @@ int main(int argc, char* argv[]){
         };
         calculateAverage(a);
     }
-    else if(sort_option==4){
-        while (fscanf(data_file,"%d",&date) == 1){
-            fscanf(data_file,"%d",&station);
-            fscanf(data_file,"%f",&associated_data);
-            data.station=station;
-            data.associated_data=associated_data;
-            a=insertionAVLAverage(a,data,&h);
-    }
-    }
+    
     if(display_option==1){
         parcoursInfixe(a,output_file);
     }
