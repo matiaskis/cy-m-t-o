@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -259,6 +258,36 @@ void calculateAverage(PAVL a){
     }
 }
 
+PAVL insertionAVLHeight(PAVL a,Data e, int* h){
+
+    if (a== NULL){
+        *h=1;
+        return creerArbre(e);
+    }
+    else if (e.associated_data < a->elmt.associated_data){
+    a->fg=insertionAVLHeight(a->fg, e, h);
+        *h =-*h; 
+    }
+    else if(e.associated_data > a->elmt.associated_data){
+        a->fd=insertionAVLHeight(a->fd, e, h);
+        
+    }
+    else{
+        *h=0;
+        return a;
+    }
+    if (*h != 0){
+        a->equilibre = a->equilibre + *h;
+        a=equilibrerAVL(a);
+        if (a->equilibre== 0){
+            *h = 0;
+        }
+        else *h = 1;
+    }
+    
+    return a;
+    }
+
 
 
 int main(int argc, char* argv[]){
@@ -275,7 +304,7 @@ int main(int argc, char* argv[]){
     FILE* output_file=fopen(argv[2],"w");
 
     if(sort_option==1){
-        while (fscanf(data_file,"%d",&station) == 1){
+        while (fscanf(data_file,"%d,",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data.station=station;
             data.associated_data=associated_data;
@@ -283,21 +312,29 @@ int main(int argc, char* argv[]){
         }
     }
     else if(sort_option==2){
-        while (fscanf(data_file,"%d",&station) == 1){
+        while (fscanf(data_file,"%d,",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data.station=station;
             data.associated_data=associated_data;
             a=insertionAVLMin(a,data,&h);
-        };
+        }
     }
     else if(sort_option==3){
-        while (fscanf(data_file,"%d",&station) == 1){
+        while (fscanf(data_file,"%d,",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data.station=station;
             data.associated_data=associated_data;
             a=insertionAVLAverage(a,data,&h);
-        };
+        }
         calculateAverage(a);
+    }
+    else if(sort_option==4){
+        while(fscanf(data_file,"%d,",&station)==1){
+            fscanf(data_file,"%f",&associated_data);
+            data.station=station;
+            data.associated_data=associated_data;
+            a=insertionAVLHeight(a,data,&h);
+        }
     }
     
     if(display_option==1){
