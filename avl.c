@@ -6,6 +6,7 @@ typedef struct data{
     int station;
     float associated_data;
     int average_increment;
+    int doublon;
 }Data;
 
 typedef struct avl{
@@ -22,6 +23,10 @@ typedef AVL* PAVL;
 void traiter(Data e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%f\n",e.associated_data);
+    if(e.doublon!=0){
+        fprintf(out,"%d",e.doublon);
+        fprintf(out,"%f\n",e.associated_data);
+    }
 }
 
  
@@ -273,6 +278,9 @@ PAVL insertionAVLHeight(PAVL a,Data e, int* h){
         
     }
     else{
+        if(e.station!=a->elmt.station){
+            a->elmt.doublon=e.station;
+        }
         *h=0;
         return a;
     }
