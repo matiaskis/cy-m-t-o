@@ -6,7 +6,6 @@ typedef struct data{
     int station;
     float associated_data;
     int average_increment;
-    int doublon;
 }Data;
 
 typedef struct avl{
@@ -16,20 +15,12 @@ typedef struct avl{
     int equilibre;
 }AVL;
 
-
 typedef AVL* PAVL;
-
 
 void traiter(Data e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%f\n",e.associated_data);
-    if(e.doublon!=0){
-        fprintf(out,"%d",e.doublon);
-        fprintf(out,"%f\n",e.associated_data);
-    }
 }
-
- 
 
 void parcoursInfixe(PAVL a, FILE* out) {
 if (a!=NULL) {
@@ -55,7 +46,6 @@ int min(int a, int b) {
     return(a < b ? a : b);
 }
 
-
 PAVL creerArbre(Data e){
     PAVL noeud ;
     noeud=malloc(sizeof(AVL));
@@ -70,15 +60,9 @@ PAVL creerArbre(Data e){
     return noeud;
 }
 
-
 PAVL rotationGauche(PAVL a){
-
- 
-
     PAVL pivot; 
     float eq_a, eq_p;
-
- 
 
     pivot = a->fd;
     a->fd = pivot->fg;
@@ -91,16 +75,9 @@ PAVL rotationGauche(PAVL a){
     return a;
     }
 
- 
-
     PAVL rotationDroite(PAVL a){
-
- 
-
     PAVL pivot ;
     float eq_a, eq_p;
-
- 
 
     pivot = a->fg;
     a->fg = pivot->fd;
@@ -113,46 +90,35 @@ PAVL rotationGauche(PAVL a){
     return a;
 }
 
- 
-
 PAVL doubleRotationGauche(PAVL a){
-
- 
-
     a->fd = rotationDroite(a->fd);
      return rotationGauche(a);
 }
-
- 
 
 PAVL doubleRotationDroite(PAVL a){
     a->fg = rotationGauche(a->fg);
      return rotationDroite(a);
 }
 
- 
-
 PAVL equilibrerAVL(PAVL a){
 
- 
+    if (a->equilibre >=  2){
+        if (a->fd->equilibre >= 0){
+            return rotationGauche(a);
+        }
 
-if (a->equilibre >=  2){
-    if (a->fd->equilibre >= 0){
-        return rotationGauche(a);
+        else return doubleRotationGauche(a);
     }
+    else if (a->equilibre  <=  -2){ 
+        if (a->fg->equilibre <= 0){
+            return rotationDroite(a);
+        }
 
-    else return doubleRotationGauche(a);
-}
-else if (a->equilibre  <=  -2){ 
-    if (a->fg->equilibre <= 0){
-         return rotationDroite(a);
+    
+
+        else return doubleRotationDroite(a);
     }
-
- 
-
-    else return doubleRotationDroite(a);
-}
-return a;
+    return a;
 }
 
  
@@ -261,95 +227,4 @@ void calculateAverage(PAVL a){
     a->elmt.associated_data=a->elmt.associated_data/a->elmt.average_increment;
     calculateAverage(a->fd);
     }
-}
-
-PAVL insertionAVLHeight(PAVL a,Data e, int* h){
-
-    if (a== NULL){
-        *h=1;
-        return creerArbre(e);
-    }
-    else if (e.associated_data < a->elmt.associated_data){
-    a->fg=insertionAVLHeight(a->fg, e, h);
-        *h =-*h; 
-    }
-    else if(e.associated_data > a->elmt.associated_data){
-        a->fd=insertionAVLHeight(a->fd, e, h);
-        
-    }
-    else{
-        if(e.station!=a->elmt.station){
-            a->elmt.doublon=e.station;
-        }
-        *h=0;
-        return a;
-    }
-    if (*h != 0){
-        a->equilibre = a->equilibre + *h;
-        a=equilibrerAVL(a);
-        if (a->equilibre== 0){
-            *h = 0;
-        }
-        else *h = 1;
-    }
-    
-    return a;
-    }
-
-
-
-int main(int argc, char* argv[]){
-    PAVL a;
-    int h;
-    int station;
-    float associated_data;
-    Data data;
-
-    int sort_option=atoi(argv[3]);
-    int display_option=atoi(argv[4]);
-
-    FILE* data_file=fopen(argv[1],"r+");
-    FILE* output_file=fopen(argv[2],"w");
-
-    if(sort_option==1){
-        while (fscanf(data_file,"%d,",&station) == 1){
-            fscanf(data_file,"%f",&associated_data);
-            data.station=station;
-            data.associated_data=associated_data;
-            a=insertionAVLMax(a,data,&h);
-        }
-    }
-    else if(sort_option==2){
-        while (fscanf(data_file,"%d,",&station) == 1){
-            fscanf(data_file,"%f",&associated_data);
-            data.station=station;
-            data.associated_data=associated_data;
-            a=insertionAVLMin(a,data,&h);
-        }
-    }
-    else if(sort_option==3){
-        while (fscanf(data_file,"%d,",&station) == 1){
-            fscanf(data_file,"%f",&associated_data);
-            data.station=station;
-            data.associated_data=associated_data;
-            a=insertionAVLAverage(a,data,&h);
-        }
-        calculateAverage(a);
-    }
-    else if(sort_option==4){
-        while(fscanf(data_file,"%d,",&station)==1){
-            fscanf(data_file,"%f",&associated_data);
-            data.station=station;
-            data.associated_data=associated_data;
-            a=insertionAVLHeight(a,data,&h);
-        }
-    }
-    
-    if(display_option==1){
-        parcoursInfixe(a,output_file);
-    }
-    else parcoursInfixeR(a,output_file);
-    fclose(data_file);
-    fclose(output_file);
-    return 0;
 }
