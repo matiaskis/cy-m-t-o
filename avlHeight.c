@@ -5,8 +5,8 @@
 typedef struct data{
     int station;
     int height;
-    float latitude;
-    float longitude;
+    //float latitude;
+    //float longitude;
     int doublon;
 }Data;
 
@@ -23,14 +23,15 @@ typedef AVL* PAVL;
 
 void traiter(Data e,FILE* out) {
     fprintf(out,"%d ",e.station);
-    fprintf(out,"%d ",e.height);
-    fprintf(out,"%f ",e.latitude);
-    fprintf(out,"%f\n",e.longitude);
+    fprintf(out,"%d\n",e.height);
+   // fprintf(out,"%f ",e.latitude);
+    //fprintf(out,"%f\n",e.longitude);
     if(e.doublon!=0){
-        fprintf(out,"%d",e.doublon);
-        fprintf(out,"%f ",e.height);
-        fprintf(out,"%f ",e.latitude);
-        fprintf(out,"%f\n",e.longitude);
+        fprintf(out,"%d ",e.doublon);
+        fprintf(out,"%d\n",e.height);
+        //fprintf(out,"%f ",e.latitude);
+        //fprintf(out,"%f\n",e.longitude);
+        
     }
 }
 
@@ -40,6 +41,7 @@ void parcoursInfixe(PAVL a, FILE* out) {
 if (a!=NULL) {
     parcoursInfixe(a->fg,out);
     traiter(a->elmt,out);
+    free(a);
     parcoursInfixe(a->fd,out);
 }
 }
@@ -48,6 +50,7 @@ void parcoursInfixeR(PAVL a, FILE* out) {
 if (a!=NULL) {
     parcoursInfixeR(a->fd,out); 
     traiter(a->elmt,out);
+    free(a);
     parcoursInfixeR(a->fg,out);
 }
 }
@@ -71,7 +74,6 @@ PAVL creerArbre(Data e){
     noeud->fg= NULL;
     noeud->fd= NULL;
     noeud->equilibre= 0;
-    noeud->elmt.average_increment=1;
     return noeud;
 }
 
@@ -193,3 +195,6 @@ PAVL insertionAVLHeight(PAVL a,Data e, int* h){
     
     return a;
     }
+
+
+
