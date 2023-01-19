@@ -5,7 +5,7 @@ typedef struct data{
     int station;
     float associated_data;
     int average_increment;
-    int doublon;
+
 }Data;
 
 typedef struct avl{
@@ -34,5 +34,4 @@ PAVL insertionAVLMax(PAVL a,Data e, int* h);
 PAVL insertionAVLMin(PAVL a,Data e, int* h);
 PAVL insertionAVLAverage(PAVL a,Data e, int* h);
 void calculateAverage(PAVL a);
-PAVL insertionAVLHeight(PAVL a,Data e, int* h);
 #endif
