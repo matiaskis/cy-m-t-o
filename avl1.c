@@ -228,3 +228,4 @@ void calculateAverage(PAVL a){
     calculateAverage(a->fd);
     }
 }
+
