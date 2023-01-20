@@ -1,11 +1,13 @@
-#ifndef AVL_H
-#define AVL_H
+#ifndef AVL1_H
+#define AVL1_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct data{
     int station;
     float associated_data;
     int average_increment;
-
 }Data;
 
 typedef struct avl{
@@ -15,9 +17,7 @@ typedef struct avl{
     int equilibre;
 }AVL;
 
-
 typedef AVL* PAVL;
-
 void traiter(Data e,FILE* out);
 void parcoursInfixe(PAVL a, FILE* out);
 void parcoursInfixeR(PAVL a, FILE* out);
@@ -35,3 +35,4 @@ PAVL insertionAVLMin(PAVL a,Data e, int* h);
 PAVL insertionAVLAverage(PAVL a,Data e, int* h);
 void calculateAverage(PAVL a);
 #endif
+
