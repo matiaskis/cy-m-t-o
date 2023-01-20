@@ -71,8 +71,8 @@ PAVL_H rotationGauche_h(PAVL_H a){
     pivot->fg = a;
     eq_a = a->equilibre;
     eq_p = pivot->equilibre;
-    a->equilibre = eq_a - max_h(eq_p, 0) - 1;
-    pivot->equilibre = min_h(min_h( eq_a-2, eq_a+eq_p-2), eq_p-1 );
+    a->equilibre = eq_a - max(eq_p, 0) - 1;
+    pivot->equilibre = min(min( eq_a-2, eq_a+eq_p-2), eq_p-1 );
     a = pivot;
     return a;
     }
@@ -93,8 +93,8 @@ PAVL_H rotationGauche_h(PAVL_H a){
     pivot->fd = a;
     eq_a = a->equilibre;
     eq_p = pivot->equilibre;
-    a->equilibre = eq_a - min_h(eq_p, 0) + 1;
-    pivot->equilibre = max_h(max_h( eq_a+2, eq_a+eq_p+2), eq_p+1 );
+    a->equilibre = eq_a - min(eq_p, 0) + 1;
+    pivot->equilibre = max(max( eq_a+2, eq_a+eq_p+2), eq_p+1 );
     a = pivot;
     return a;
 }
