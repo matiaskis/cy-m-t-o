@@ -1,34 +1,38 @@
-#ifndef AVL_H
-#define AVL_H
+#ifndef AVLH_H
+#define AVLH_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-typedef struct data{
+
+typedef struct data_h{
     int station;
-    float associated_data;
-    int average_increment;
+    int height;
+    //float latitude;
+    //float longitude;
+    int doublon;
+}Data_h;
 
-}Data;
-
-typedef struct avl{
-    Data elmt;
-    struct avl * fg;
-    struct avl * fd;
+typedef struct avl_h{
+    Data_h elmt;
+    struct avl_h * fg;
+    struct avl_h * fd;
     int equilibre;
-}AVL;
+}AVL_H;
 
+typedef AVL_H* PAVL_H;
 
-typedef AVL* PAVL;
+void traiter_h(Data_h e,FILE* out);
+void parcoursInfixe_h(PAVL_H a, FILE* out);
+void parcoursInfixeR_h(PAVL_H a, FILE* out);
+int max_h(int a, int b);
+int min_h(int a, int b) ;
+PAVL_H creerArbre_h(Data_h e);
 
-void traiter(Data e,FILE* out);
-void parcoursInfixe(PAVL a, FILE* out);
-void parcoursInfixeR(PAVL a, FILE* out);
-int max(int a, int b);
-int min(int a, int b);
-PAVL creerArbre(Data e);
-
-PAVL rotationGauche(PAVL a);
-PAVL rotationDroite(PAVL a);
-PAVL doublerotationGauche(PAVL a);
-PAVL doublerotationDroite(PAVL a);
-PAVL equilibrerAVL(PAVL a);
-PAVL insertionAVLHeight(PAVL a,Data e, int* h)
+PAVL_H rotationGauche_h(PAVL_H a);
+PAVL_H rotationDroite_h(PAVL_H a);
+PAVL_H doublerotationGauche_h(PAVL_H a);
+PAVL_H doublerotationDroite_h(PAVL_H a);
+PAVL_H equilibrerAVL_h(PAVL_H a);
+PAVL_H insertionAVLHHeight(PAVL_H a,Data_h e, int* h);
 #endif
