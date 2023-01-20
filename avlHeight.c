@@ -1,27 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "avlh.h"
 
-typedef struct data{
-    int station;
-    int height;
-    //float latitude;
-    //float longitude;
-    int doublon;
-}Data;
+ 
 
-typedef struct avl{
-    Data elmt;
-    struct avl * fg;
-    struct avl * fd;
-    int equilibre;
-}AVL;
-
-
-typedef AVL* PAVL;
-
-
-void traiter(Data e,FILE* out) {
+void traiter_h(Data_h e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%d\n",e.height);
    // fprintf(out,"%f ",e.latitude);
@@ -37,36 +21,36 @@ void traiter(Data e,FILE* out) {
 
  
 
-void parcoursInfixe(PAVL a, FILE* out) {
+void parcoursInfixe_h(PAVL_H a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixe(a->fg,out);
-    traiter(a->elmt,out);
+    parcoursInfixe_h(a->fg,out);
+    traiter_h(a->elmt,out);
     free(a);
-    parcoursInfixe(a->fd,out);
+    parcoursInfixe_h(a->fd,out);
 }
 }
 
-void parcoursInfixeR(PAVL a, FILE* out) {
+void parcoursInfixeR_h(PAVL_H a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixeR(a->fd,out); 
-    traiter(a->elmt,out);
+    parcoursInfixeR_h(a->fd,out); 
+    traiter_h(a->elmt,out);
     free(a);
-    parcoursInfixeR(a->fg,out);
+    parcoursInfixeR_h(a->fg,out);
 }
 }
 
-int max(int a, int b) {
+int max_h(int a, int b) {
     return(a<b ? b : a);
 }
 
-int min(int a, int b) {
+int min_h(int a, int b) {
     return(a < b ? a : b);
 }
 
 
-PAVL creerArbre(Data e){
-    PAVL noeud ;
-    noeud=malloc(sizeof(AVL));
+PAVL_H creerArbre_h(Data_h e){
+    PAVL_H noeud ;
+    noeud=malloc(sizeof(AVL_H));
     if(noeud==NULL){
         exit(1);
     }
@@ -78,11 +62,11 @@ PAVL creerArbre(Data e){
 }
 
 
-PAVL rotationGauche(PAVL a){
+PAVL_H rotationGauche_h(PAVL_H a){
 
  
 
-    PAVL pivot; 
+    PAVL_H pivot; 
     float eq_a, eq_p;
 
  
@@ -92,19 +76,19 @@ PAVL rotationGauche(PAVL a){
     pivot->fg = a;
     eq_a = a->equilibre;
     eq_p = pivot->equilibre;
-    a->equilibre = eq_a - max(eq_p, 0) - 1;
-    pivot->equilibre = min(min( eq_a-2, eq_a+eq_p-2), eq_p-1 );
+    a->equilibre = eq_a - max_h(eq_p, 0) - 1;
+    pivot->equilibre = min_h(min_h( eq_a-2, eq_a+eq_p-2), eq_p-1 );
     a = pivot;
     return a;
     }
 
  
 
-    PAVL rotationDroite(PAVL a){
+    PAVL_H rotationDroite_h(PAVL_H a){
 
  
 
-    PAVL pivot ;
+    PAVL_H pivot ;
     float eq_a, eq_p;
 
  
@@ -114,67 +98,67 @@ PAVL rotationGauche(PAVL a){
     pivot->fd = a;
     eq_a = a->equilibre;
     eq_p = pivot->equilibre;
-    a->equilibre = eq_a - min(eq_p, 0) + 1;
-    pivot->equilibre = max(max( eq_a+2, eq_a+eq_p+2), eq_p+1 );
+    a->equilibre = eq_a - min_h(eq_p, 0) + 1;
+    pivot->equilibre = max_h(max_h( eq_a+2, eq_a+eq_p+2), eq_p+1 );
     a = pivot;
     return a;
 }
 
  
 
-PAVL doubleRotationGauche(PAVL a){
+PAVL_H doubleRotationGauche_h(PAVL_H a){
 
  
 
-    a->fd = rotationDroite(a->fd);
-     return rotationGauche(a);
+    a->fd = rotationDroite_h(a->fd);
+     return rotationGauche_h(a);
 }
 
  
 
-PAVL doubleRotationDroite(PAVL a){
-    a->fg = rotationGauche(a->fg);
-     return rotationDroite(a);
+PAVL_H doubleRotationDroite_h(PAVL_H a){
+    a->fg = rotationGauche_h(a->fg);
+     return rotationDroite_h(a);
 }
 
  
 
-PAVL equilibrerAVL(PAVL a){
+PAVL_H equilibrerAVL_h(PAVL_H a){
 
  
 
 if (a->equilibre >=  2){
     if (a->fd->equilibre >= 0){
-        return rotationGauche(a);
+        return rotationGauche_h(a);
     }
 
-    else return doubleRotationGauche(a);
+    else return doubleRotationGauche_h(a);
 }
 else if (a->equilibre  <=  -2){ 
     if (a->fg->equilibre <= 0){
-         return rotationDroite(a);
+         return rotationDroite_h(a);
     }
 
  
 
-    else return doubleRotationDroite(a);
+    else return doubleRotationDroite_h(a);
 }
 return a;
 }
 
 
-PAVL insertionAVLHeight(PAVL a,Data e, int* h){
+PAVL_H insertionAVLHHeight(PAVL_H a,Data_h e, int* h){
 
     if (a== NULL){
         *h=1;
-        return creerArbre(e);
+        return creerArbre_h(e);
     }
     else if (e.height < a->elmt.height){
-    a->fg=insertionAVLHeight(a->fg, e, h);
+    a->fg=insertionAVLHHeight(a->fg, e, h);
         *h =-*h; 
     }
     else if(e.height > a->elmt.height){
-        a->fd=insertionAVLHeight(a->fd, e, h);
+        a->fd=insertionAVLHHeight(a->fd, e, h);
         
     }
     else{
@@ -186,7 +170,7 @@ PAVL insertionAVLHeight(PAVL a,Data e, int* h){
     }
     if (*h != 0){
         a->equilibre = a->equilibre + *h;
-        a=equilibrerAVL(a);
+        a=equilibrerAVL_h(a);
         if (a->equilibre== 0){
             *h = 0;
         }
@@ -195,6 +179,7 @@ PAVL insertionAVLHeight(PAVL a,Data e, int* h){
     
     return a;
     }
+
 
 
 
