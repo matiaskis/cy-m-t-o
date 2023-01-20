@@ -147,7 +147,7 @@ PAVL3 insertionAVL3SecondTree(PAVL3 a,Data3 e, int* h){
         *h =-*h; 
     }
     else if(e.station > a->elmt.station){
-        a->fd=insertionAVL3SecondTre(a->fd, e, h);
+        a->fd=insertionAVL3SecondTree(a->fd, e, h);
         
     }
     else{
