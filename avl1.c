@@ -1,21 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-typedef struct data{
-    int station;
-    float associated_data;
-    int average_increment;
-}Data;
-
-typedef struct avl{
-    Data elmt;
-    struct avl * fg;
-    struct avl * fd;
-    int equilibre;
-}AVL;
-
-typedef AVL* PAVL;
+#include "avl1.h"
 
 void traiter(Data e,FILE* out) {
     fprintf(out,"%d ",e.station);
@@ -26,6 +10,7 @@ void parcoursInfixe(PAVL a, FILE* out) {
 if (a!=NULL) {
     parcoursInfixe(a->fg,out);
     traiter(a->elmt,out);
+    free(a);
     parcoursInfixe(a->fd,out);
 }
 }
@@ -34,6 +19,7 @@ void parcoursInfixeR(PAVL a, FILE* out) {
 if (a!=NULL) {
     parcoursInfixeR(a->fd,out); 
     traiter(a->elmt,out);
+    free(a);
     parcoursInfixeR(a->fg,out);
 }
 }
@@ -228,4 +214,5 @@ void calculateAverage(PAVL a){
     calculateAverage(a->fd);
     }
 }
+
 
