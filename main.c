@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
             fscanf(data_file,"%f",&associated_data);
             data1.station=station;
             data1.associated_Data1=associated_data;
-            a1=insertionAVLMax(a1,data1,&h);
+            a1=insertionAVL1Max(a1,data1,&h);
         }
         if(display_option==1){
         parcoursInfixe(a1,output_file);
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
             fscanf(data_file,"%f",&associated_data);
             data1.station=station;
             data1.associated_Data1=associated_data;
-            a1=insertionAVLMin(a1,data1,&h);
+            a1=insertionAVL1Min(a1,data1,&h);
         }
         if(display_option==1){
         parcoursInfixe(a1,output_file);
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]){
             fscanf(data_file,"%f",&associated_data);
             data1.station=station;
             data1.associated_Data1=associated_data;
-            a1=insertionAVLAverage(a1,data1,&h);
+            a1=insertionAVL1Average(a1,data1,&h);
         }
         calculateAverage(a1);
         if(display_option==1){
