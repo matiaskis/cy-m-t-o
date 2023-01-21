@@ -41,7 +41,7 @@ fi
 
 
 if [ "$7" = "1" ]; then
-# test
+echo  "rolo"# test
 fi
 if [ $9 -eq 1 ]; then
     tail +2 $1 | cut -d";" -f1,7 | awk '{if($2 != "" ) printf $0" ";}' FS=";" > station_pres_ave.csv
