@@ -30,24 +30,21 @@ trait_argument() {
      #trait_argument_d_country $file $3 $4 $5 ;
 fi
 
-
-
-if [ $9 -eq 2 ]; then
-tail +2 $1 | cut -d';' -f2,7 | awk '{if($2 != "" ) printf $0" ";}' FS=";"  > station_pres_date.csv
-awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"/"); split(ddate[2],hdate,":");  all=sprintf("%d%d%d%d", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";"  station_pres_date.csv>  station_pres_date.csv
-#pour envoyer les date correctement avl3, avl2 pareil juste change $2 en $1
-./exec station_pres_date.csv gnuplot_pres_date.csv 5 1
-fi
-
-
 if [ "$7" = "1" ]; then
-echo  "rolo"# test
+    echo "rolo"# test
 fi
 if [ $9 -eq 1 ]; then
     tail +2 $1 | cut -d";" -f1,7 | awk '{if($2 != "" ) printf $0" ";}' FS=";" > station_pres_ave.csv
     echo "rolo"
-    ./exec station_pres_ave.csv gnuplot_pres_ave.csv 3 1
+    ./exec station_pres_ave.csv gnuplot_pres_ave.csv 3 1;
     #gnuplot pression_moyenne.sh
+elif [ $9 -eq 2 ]; then
+    tail +2 $1 | cut -d";" -f2,7 | awk '{if($2 != "" ) printf $0"\n";}' FS=";" > station_pres_date.csv
+    awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";" station_pres_date.csv > date2.csv
+    #pour envoyer les date correctement avl3, avl2 pareil juste change $2 en $1
+    ./exec date2.csv gnuplot_pres_date.csv 5 1;
+elif [ $9 -eq 3 ]; then
+    tail +2 $1 | cut -d";" -f1,2,7 | awk '{if($2 != "" ) printf $0"\n";}' FS=";" > station_pres_date.csv
 fi
 if [ ${@: -1} -eq 1 ]; then
     tail +2 $1 | cut -d";" -f1,11 | awk '{if($2 != "" ) printf $0" ";}' FS=";" > station_temp_ave.csv
@@ -65,7 +62,7 @@ trait_argument_d_country() {
     if [ $1 -eq 1 ]; then
         start=$(echo $2 | sed -e "s|/||g")
         finish=$(echo $3 | sed -e "s|/||g")
-        awk -v st=$start -v fn=$finish '{split($2,ddate,"T") ; split(ddate[1],compil,"/"); all=sprintf("%d%d%d", compil[1], compil[2], compil[3]); if(all < fn && all > st) print $0;}' FS=";" $5 > $5#cut les dates
+        awk -v st=$start -v fn=$finish '{split($2,ddate,"T") ; split(ddate[1],compil,"-"); all=sprintf("%d%d%d", compil[1], compil[2], compil[3]); if(all < fn && all > st) print $0;}' FS=";" $5 > $5#cut les dates
                 
     fi
     case $4 in 
