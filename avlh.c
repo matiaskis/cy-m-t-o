@@ -16,7 +16,10 @@ void traiter_h(Data_h e,FILE* out) {
         fprintf(out,"%d\n",e.height);
         //fprintf(out,"%f ",e.latitude);
         //fprintf(out,"%f\n",e.longitude);
-        
+    }
+    if(e.doublon2 !=0 ){
+        fprintf(out,"%d ",e.doublon2);
+        fprintf(out,"%d\n",e.height);
     }
 }
 
@@ -158,7 +161,10 @@ PAVL_H insertionAVLHHeight(PAVL_H a,Data_h e, int* h){
     }
     else{
         if(e.station!=a->elmt.station){
-            a->elmt.doublon=e.station;
+            if(e.station != a->elmt.doublon && a->elmt.doublon != 0 ){
+                a->elmt.doublon2=e.station;
+            }
+            else a->elmt.doublon=e.station;
         }
         *h=0;
         return a;
