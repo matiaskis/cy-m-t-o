@@ -29,8 +29,10 @@ trait_argument() {
      #file="station_height.csv"
      #trait_argument_d_country $file $3 $4 $5 ;
 fi
+awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"/"); split(ddate[2],hdate,":");  all=sprintf("%d%d%d%d", fdate[1], fdate[2], fdate[3], hdate[1]);   print "$all;$2";}' FS=";" date2.csv > date2_f.csv
+#pour envoyer les date correctement avl3, avl2 pareil juste change $2 en $1
 if [ "$7" = "1" ]; then
-echo "lolo"# test
+# test
 fi
 if [ $9 -eq 1 ]; then
     tail +2 $1 | cut -d";" -f1,7 | awk '{if($2 != "" ) printf $0" ";}' FS=";" > station_pres_ave.csv
@@ -320,6 +322,3 @@ trait_argument_d_country() {
             fi
             rm check_field.csv
             trait_argument $file $d $choice1 $choice2 $x $h $m $w $p $t
-            
-
-
