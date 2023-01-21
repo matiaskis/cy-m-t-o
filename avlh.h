@@ -11,6 +11,7 @@ typedef struct data_h{
     //float latitude;
     //float longitude;
     int doublon;
+    int doublon2;
 }Data_h;
 
 typedef struct avl_h{
