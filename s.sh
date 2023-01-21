@@ -32,7 +32,7 @@ fi
 
 
 
-if [ $9 -eq 2]; then
+if [ $9 -eq 2 ]; then
 tail +2 $1 | cut -d';' -f2,7 | awk '{if($2 != "" ) printf $0" ";}' FS=";"  > station_pres_date.csv
 awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"/"); split(ddate[2],hdate,":");  all=sprintf("%d%d%d%d", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";"  station_pres_date.csv>  station_pres_date.csv
 #pour envoyer les date correctement avl3, avl2 pareil juste change $2 en $1
