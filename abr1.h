@@ -1,3 +1,6 @@
+#ifndef ABR1_H
+#define ABR1_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,3 +28,4 @@ PABR1 insertionMax_abr1(PABR1 a,Data1ABR e);
 PABR1 insertionMin_abr1(PABR1 a,Data1ABR e);
 PABR1 insertionAverage_abr1(PABR1 a, Data1ABR e);
 void calculateAverage_abr1(PABR1 a);
+#endif
