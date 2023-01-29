@@ -17,11 +17,11 @@ typedef struct abr1{
 
 typedef ABR1* PABR1;
 
-void traiter(Data1ABR e,FILE* out) ;
-void parcoursInfixe(PABR1 a, FILE* out);
-void parcoursInfixeR(PABR1 a, FILE* out);
-PABR1 creerArbre(Data1ABR e);
-PABR1 insertionABRMax(PABR1 a,Data1ABR e);
-PABR1 insertionABRMin(PABR1 a,Data1ABR e);
-PABR1 insertionABRAverage(PABR1 a, Data1ABR e);
-void calculateAverage(PABR1 a);
+void traiter_abr1(Data1ABR e,FILE* out) ;
+void parcoursInfixe_abr1(PABR1 a, FILE* out);
+void parcoursInfixeR_abr1(PABR1 a, FILE* out);
+PABR1 creerArbre_abr1(Data1ABR e);
+PABR1 insertionABRMax_abr1(PABR1 a,Data1ABR e);
+PABR1 insertionABRMin_abr1(PABR1 a,Data1ABR e);
+PABR1 insertionABRAverage_abr1(PABR1 a, Data1ABR e);
+void calculateAverage_abr1(PABR1 a);
