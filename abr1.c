@@ -42,17 +42,17 @@ PABR1 creerArbre_abr1(Data1ABR e){
 
  
 
-PABR1 insertionABRMax_abr1(PABR1 a,Data1ABR e){
+PABR1 insertionMax_abr1(PABR1 a,Data1ABR e){
 
     if (a== NULL){
         return creerArbre(e);
     }
     else if (e.station < a->elmt.station){
-    a->fg=insertionABRMax_abr1(a->fg, e);
+    a->fg=insertionMax_abr1(a->fg, e);
 
     }
     else if(e.station > a->elmt.station){
-        a->fd=insertionABRMax_abr1(a->fd, e);
+        a->fd=insertionMax_abr1(a->fd, e);
         
     }
     else{
@@ -64,18 +64,18 @@ PABR1 insertionABRMax_abr1(PABR1 a,Data1ABR e){
     return a;
     }
 
-PABR1 insertionABRMin_abr1(PABR1 a,Data1ABR e){
+PABR1 insertionMin_abr1(PABR1 a,Data1ABR e){
 
     if (a== NULL){
 
         return creerArbre_abr1(e);
     }
     else if (e.station < a->elmt.station){
-    a->fg=insertionABRMin_abr1(a->fg, e);
+    a->fg=insertionMin_abr1(a->fg, e);
 
     }
     else if(e.station > a->elmt.station){
-        a->fd=insertionABRMin_abr1(a->fd, e);
+        a->fd=insertionMin_abr1(a->fd, e);
         
     }
     else{
@@ -90,16 +90,16 @@ PABR1 insertionABRMin_abr1(PABR1 a,Data1ABR e){
     return a;
     }
     
-PABR1 insertionABRAverage_abr1(PABR1 a, Data1ABR e){
+PABR1 insertionAverage_abr1(PABR1 a, Data1ABR e){
 
     if (a== NULL){
         return creerArbre_abr1(e);
     }
     else if (e.station < a->elmt.station){
-        a->fg=insertionABRAverage_abr1(a->fg, e);
+        a->fg=insertionAverage_abr1(a->fg, e);
     }
     else if(e.station > a->elmt.station){
-        a->fd=insertionABRAverage_abr1(a->fd, e);
+        a->fd=insertionAverage_abr1(a->fd, e);
         
     }
     else{
