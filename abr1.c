@@ -28,7 +28,7 @@ if (a!=NULL) {
 
 PABR1 creerArbre_abr1(Data1ABR e){
     PABR1 noeud ;
-    noeud=malloc(sizeof(ABR));
+    noeud=malloc(sizeof(ABR1));
     if(noeud==NULL){
         exit(1);
     }
