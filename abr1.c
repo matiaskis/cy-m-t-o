@@ -1,4 +1,5 @@
 #include "abr1.h"
+#include "avl1.h"
 
 void traiter_abr1(Data1ABR e,FILE* out) {
     fprintf(out,"%d ",e.station);
