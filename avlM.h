@@ -16,7 +16,7 @@ typedef struct avl_m{
     Data_m elmt;
     struct avl_m * fg;
     struct avl_m * fd;
-    int equilibre;
+    int balance;
 }AVL_m;
 
 typedef AVL_m* PAVL_m;
