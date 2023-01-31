@@ -9,7 +9,7 @@ void treat_abr1(Data1ABR e,FILE* out) {
 void infixPath_abr1(PABR1 a, FILE* out) {
 if (a!=NULL) {
     infixPath_abr1(a->fg,out);
-    traite_abr1r(a->elmt,out);
+    traite_abr1(a->elmt,out);
     free(a);
     infixPath_abr1(a->fd,out);
 }
