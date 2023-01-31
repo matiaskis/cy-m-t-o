@@ -1,7 +1,7 @@
 #include "avl3.h"
 #include "avl1.h"
 
-void Traiter3(Data3 e,FILE* out){
+void treat3(Data3 e,FILE* out){
     long h,d,m,y;
     h=((e.date3%100));
     d=((e.date3%10000)-e.date3%100)/100;
@@ -12,126 +12,126 @@ void Traiter3(Data3 e,FILE* out){
     fprintf(out,"%f\n",e.associated_Data3);    
 }
 
-void sousParcoursInfixe3(PAVL3 a,FILE * out){
+void secondInfixPath3(PAVL3 a,FILE * out){
     if (a!=NULL) {
-        sousParcoursInfixe3(a->fg,out);
-        Traiter3(a->elmt,out);
+        secondInfixPath3(a->fg,out);
+        treat3(a->elmt,out);
         free(a);
-        sousParcoursInfixe3(a->fd,out);
+        secondInfixPath3(a->fd,out);
 }
 }
 
-void parcoursInfixe3(PAVL3 a, FILE* out) {
+void infixPath3(PAVL3 a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixe3(a->fg,out);
-    sousParcoursInfixe3(a->secondTree,out);
-    parcoursInfixe3(a->fd,out);
+    infixPath3(a->fg,out);
+    secondInfixPath3(a->secondTree,out);
+    infixPath3(a->fd,out);
 }
 }
 
-void sousParcoursInfixeR3(PAVL3 a,FILE * out){
+void secondInfixPathR3(PAVL3 a,FILE * out){
     if (a!=NULL) {
-        sousParcoursInfixeR3(a->fd,out);
-        Traiter3(a->elmt,out);
+        secondInfixPathR3(a->fd,out);
+        treat3(a->elmt,out);
         free(a);
-        sousParcoursInfixeR3(a->fg,out);
+        secondInfixPathR3(a->fg,out);
 }
 }
 
-void parcoursInfixeR3(PAVL3 a, FILE* out) {
+void infixPathR3(PAVL3 a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixeR3(a->fd,out); 
-    sousParcoursInfixeR3(a->secondTree,out);
-    parcoursInfixeR3(a->fg,out);
+    infixPathR3(a->fd,out); 
+    secondInfixPathR3(a->secondTree,out);
+    infixPathR3(a->fg,out);
 }
 }
 
 
 
-PAVL3 creerArbre3(Data3 e){
-    PAVL3 noeud ;
-    noeud=malloc(sizeof(AVL3));
-    if(noeud==NULL){
+PAVL3 createTree3(Data3 e){
+    PAVL3 tree ;
+    tree=malloc(sizeof(AVL3));
+    if(tree==NULL){
         exit(1);
     }
-    noeud->elmt=e;
-    noeud->fg= NULL;
-    noeud->fd= NULL;
-    noeud->equilibre= 0;
-    return noeud;
+    tree->elmt=e;
+    tree->fg= NULL;
+    tree->fd= NULL;
+    tree->balance= 0;
+    return tree;
 }
 
-PAVL3 creerArbreAVL3(Data3 e){
-    PAVL3 noeud ;
-    noeud=malloc(sizeof(AVL3));
-    if(noeud==NULL){
+PAVL3 createTreeAVL3(Data3 e){
+    PAVL3 tree ;
+    tree=malloc(sizeof(AVL3));
+    if(tree==NULL){
         exit(1);
     }
-    noeud->elmt=e;
-    noeud->fg= NULL;
-    noeud->fd= NULL;
-    noeud->secondTree=creerArbre3(e);
-    noeud->equilibre= 0;
-    return noeud;
+    tree->elmt=e;
+    tree->fg= NULL;
+    tree->fd= NULL;
+    tree->secondTree=createTree3(e);
+    tree->balance= 0;
+    return tree;
 }
 
-PAVL3 rotationGauche3(PAVL3 a){
+PAVL3 LeftRotation3(PAVL3 a){
     PAVL3 pivot; 
     float eq_a, eq_p;
 
     pivot = a->fd;
     a->fd = pivot->fg;
     pivot->fg = a;
-    eq_a = a->equilibre;
-    eq_p = pivot->equilibre;
-    a->equilibre = eq_a - max(eq_p, 0) - 1;
-    pivot->equilibre = min(min( eq_a-2, eq_a+eq_p-2), eq_p-1 );
+    eq_a = a->balance;
+    eq_p = pivot->balance;
+    a->balance = eq_a - max(eq_p, 0) - 1;
+    pivot->balance = min(min( eq_a-2, eq_a+eq_p-2), eq_p-1 );
     a = pivot;
     return a;
     }
 
-    PAVL3 rotationDroite3(PAVL3 a){
+    PAVL3 RightRotation3(PAVL3 a){
     PAVL3 pivot ;
     float eq_a, eq_p;
 
     pivot = a->fg;
     a->fg = pivot->fd;
     pivot->fd = a;
-    eq_a = a->equilibre;
-    eq_p = pivot->equilibre;
-    a->equilibre = eq_a - min(eq_p, 0) + 1;
-    pivot->equilibre = max(max( eq_a+2, eq_a+eq_p+2), eq_p+1 );
+    eq_a = a->balance;
+    eq_p = pivot->balance;
+    a->balance = eq_a - min(eq_p, 0) + 1;
+    pivot->balance = max(max( eq_a+2, eq_a+eq_p+2), eq_p+1 );
     a = pivot;
     return a;
 }
 
-PAVL3 doubleRotationGauche3(PAVL3 a){
-    a->fd = rotationDroite3(a->fd);
-     return rotationGauche3(a);
+PAVL3 doubleLeftRotation3(PAVL3 a){
+    a->fd = RightRotation3(a->fd);
+     return LeftRotation3(a);
 }
 
-PAVL3 doubleRotationDroite3(PAVL3 a){
-    a->fg = rotationGauche3(a->fg);
-     return rotationDroite3(a);
+PAVL3 doubleRightRotation3(PAVL3 a){
+    a->fg = LeftRotation3(a->fg);
+     return RightRotation3(a);
 }
 
-PAVL3 equilibrerAVL3(PAVL3 a){
+PAVL3 balanceAVL3(PAVL3 a){
 
-    if (a->equilibre >=  2){
-        if (a->fd->equilibre >= 0){
-            return rotationGauche3(a);
+    if (a->balance >=  2){
+        if (a->fd->balance >= 0){
+            return LeftRotation3(a);
         }
 
-        else return doubleRotationGauche3(a);
+        else return doubleLeftRotation3(a);
     }
-    else if (a->equilibre  <=  -2){ 
-        if (a->fg->equilibre <= 0){
-            return rotationDroite3(a);
+    else if (a->balance  <=  -2){ 
+        if (a->fg->balance <= 0){
+            return RightRotation3(a);
         }
 
     
 
-        else return doubleRotationDroite3(a);
+        else return doubleRightRotation3(a);
     }
     return a;
 }
@@ -140,7 +140,7 @@ PAVL3 insertionAVL3SecondTree(PAVL3 a,Data3 e, int* h){
 
     if (a== NULL){
         *h=1;
-        return creerArbre3(e);
+        return createTree3(e);
     }
     else if (e.station < a->elmt.station){
     a->fg=insertionAVL3SecondTree(a->fg, e, h);
@@ -156,9 +156,9 @@ PAVL3 insertionAVL3SecondTree(PAVL3 a,Data3 e, int* h){
         return a;
     }
     if (*h != 0){
-        a->equilibre = a->equilibre + *h;
-        a=equilibrerAVL3(a);
-        if (a->equilibre== 0){
+        a->balance = a->balance + *h;
+        a=balanceAVL3(a);
+        if (a->balance== 0){
             *h = 0;
         }
         else *h = 1;
@@ -171,7 +171,7 @@ PAVL3 insertionAVL3date(PAVL3 a,Data3 e, int* h,int * g){
 
     if (a== NULL){
         *h=1;
-        return creerArbreAVL3(e);
+        return createTreeAVL3(e);
     }
     else if (e.date3 < a->elmt.date3){
         a->fg=insertionAVL3date(a->fg, e, h,g);
@@ -187,9 +187,9 @@ PAVL3 insertionAVL3date(PAVL3 a,Data3 e, int* h,int * g){
         return a;
     }
     if (*h != 0){
-        a->equilibre = a->equilibre + *h;
-        a=equilibrerAVL3(a);
-        if (a->equilibre== 0){
+        a->balance = a->balance + *h;
+        a=balancerAVL3(a);
+        if (a->balance== 0){
             *h = 0;
         }
         else *h = 1;
