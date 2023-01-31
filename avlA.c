@@ -7,21 +7,21 @@ void treatA(DataA1 e,FILE* out) {
     fprintf(out,"%f\n",e.associated_DataA2);
 }
 
-void infixePathA(PAVLAA a, FILE* out) {
+void infixPathA(PAVLAA a, FILE* out) {
 if (a!=NULL) {
-    infixePathA(a->fg,out);
+    infixPathA(a->fg,out);
     treatA(a->elmt,out);
     free(a);
-    infixePathA(a->fd,out);
+    infixPathA(a->fd,out);
 }
 }
 
-void infixePathRA(PAVLAA a, FILE* out) {
+void infixPathRA(PAVLAA a, FILE* out) {
 if (a!=NULL) {
-    infixePathRA(a->fd,out); 
+    infixPathRA(a->fd,out); 
     treatA(a->elmt,out);
     free(a);
-    infixePathRA(a->fg,out);
+    infixPathRA(a->fg,out);
 }
 }
 
