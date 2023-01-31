@@ -19,15 +19,16 @@ typedef struct AVLAA{
 }AVLAA;
 
 typedef AVLAA* PAVLAA;
-void traiterA(DataA1 e,FILE* out);
-void parcoursInfixeA(PAVLAA a, FILE* out);
-void parcoursInfixeRA(PAVLAA a, FILE* out);
-PAVLAA creerArbreA(DataA1 e);
-PAVLAA rotationGaucheA(PAVLAA a);
-PAVLAA rotationDroiteA(PAVLAA a);
-PAVLAA doublerotationGaucheA(PAVLAA a);
-PAVLAA doublerotationDroiteA(PAVLAA a);
-PAVLAA equilibrerAVLAA(PAVLAA a);
+
+void treatA(DataA1 e,FILE* out);
+void infixPathA(PAVLAA a, FILE* out);
+void infixPathRA(PAVLAA a, FILE* out);
+PAVLAA createTreeA(DataA1 e);
+PAVLAA LeftRotationA(PAVLAA a);
+PAVLAA RightRotationA(PAVLAA a);
+PAVLAA doubleLeftRotationA(PAVLAA a);
+PAVLAA doubleRightRotationA(PAVLAA a);
+PAVLAA balanceAVLAA(PAVLAA a);
 PAVLAA insertionAVLAAAverage(PAVLAA a,DataA1 e, int* h);
 void calculateAverageA(PAVLAA a);
 #endif
