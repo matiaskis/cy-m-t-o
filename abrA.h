@@ -25,7 +25,7 @@ typedef ABRAA* PABRAA;
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-void treatA(DataA1 e,FILE* out);
+void treat_abra(Data_abra e,FILE* out);
 
 /*!
      * @brief                       this function is used to browse into  the tree                                            
@@ -33,7 +33,7 @@ void treatA(DataA1 e,FILE* out);
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-void infixPathA(PABRAA a, FILE* out);
+void infixPath_abra(PABRAA a, FILE* out);
 
 /*!
      * @brief                       this function is used to browse into  the tree but in reverse                                           
@@ -41,14 +41,14 @@ void infixPathA(PABRAA a, FILE* out);
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-void infixPathRA(PABRAA a, FILE* out);
+void infixPathR_abra(PABRAA a, FILE* out);
 
 /*!
      * @brief                       this function is used to create a new tree                                         
      * @param  e                    element you want to insert first in the tree
      * @return                      pointer relative to the tree
      */
-PABRAA createTreeA(Data_abra e);
+PABRAA createTree_abra(Data_abra e);
 
  /*!
      * @brief                       this function is used to insert an element in the tree, keeping the the gross value of all associated_data                                          
@@ -56,12 +56,12 @@ PABRAA createTreeA(Data_abra e);
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
      */
-PABRAA insertionAVLAAAverage(PABRAA a,Data_abra e, int* h);
+PABRAA insertionAverage_abra(PABRAA a,Data_abra e, int* h);
 
 /*!
      * @brief                       this function is used to calculate the average of the associated data in each element of the tree                                         
      * @param  a                    pointer relative to the tree
      * @return                      nothing
      */
-void calculateAverageA(PABRAA a);
+void calculateAverage_abra(PABRAA a);
 #endif
