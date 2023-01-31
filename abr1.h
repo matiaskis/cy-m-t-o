@@ -51,7 +51,7 @@ typedef ABR1* PABR1;
     PABR1 createTree_abr1(Data1ABR e);
 
     /*!
-     * @brief                       this function is used to insert a element in the tree, keeping the max value of associated_data                                         
+     * @brief                       this function is used to insert an element in the tree, keeping the max value of associated_data                                         
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
@@ -59,7 +59,7 @@ typedef ABR1* PABR1;
     PABR1 insertionMax_abr1(PABR1 a,Data1ABR e);
 
     /*!
-     * @brief                       this function is used to insert a element in the tree, keeping the min value of associated_data                                          
+     * @brief                       this function is used to insert an element in the tree, keeping the min value of associated_data                                          
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
@@ -67,7 +67,7 @@ typedef ABR1* PABR1;
     PABR1 insertionMin_abr1(PABR1 a,Data1ABR e);
 
     /*!
-     * @brief                       this function is used to insert a element in the tree, keeping the the gross value of all associated_data                                          
+     * @brief                       this function is used to insert an element in the tree, keeping the the gross value of all associated_data                                          
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
