@@ -22,9 +22,42 @@ typedef struct abr_h{
 
 typedef ABR_H* PABR_H;
 
-void treat_abrh(Data_abrh e,FILE* out);
-void infixPath_h(PABR_H a, FILE* out);
-void infixPathR_h(PABR_H a, FILE* out);
-PABR_H createTree_abrh(Data_abrh e);
-PABR_H insertionABRHeight(PABR_H a,Data_abrh e);
+    /*!
+     * @brief                       this function is used to write all values needed in the output file                                            
+     * @param  e                    current element written
+     * @param  out                  pointer relative to ouput file
+     * @return                      nothing
+     */
+    void treat_abrh(Data_abrh e,FILE* out);
+    
+    /*!
+     * @brief                       this function is used to browse into  the tree                                            
+     * @param  a                    pointer relative to the tree
+     * @param  out                  pointer relative to ouput file
+     * @return                      nothing
+     */
+    void infixPath_h(PABR_H a, FILE* out);
+    
+    /*!
+     * @brief                       this function is used to browse into  the tree but in reverse                                           
+     * @param  a                    pointer relative to the tree
+     * @param  out                  pointer relative to ouput file
+     * @return                      nothing
+     */
+    void infixPathR_h(PABR_H a, FILE* out);
+    
+    /*!
+     * @brief                       this function is used to create a new tree                                         
+     * @param  e                    element you want to insert first in the tree
+     * @return                      pointer relative to the tree
+     */
+    PABR_H createTree_abrh(Data_abrh e);
+    
+    /*!
+     * @brief                       this function is used to insert an element in the tree                                       
+     * @param  a                    pointer relative to the tree
+     * @param  e                    element to insert
+     * @return                      pointer relative to the tree
+     */
+    PABR_H insertionABRHeight(PABR_H a,Data_abrh e);
 #endif
