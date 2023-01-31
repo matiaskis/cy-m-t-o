@@ -1,7 +1,7 @@
 #include "avl2.h"
 #include "avl1.h"
 
-void traiter2(Data2 e,FILE* out) {
+void treat2(Data2 e,FILE* out) {
     long h,d,m,y;
     h=((e.date2%100));
     d=((e.date2%10000)-e.date2%100)/100;
@@ -11,96 +11,96 @@ void traiter2(Data2 e,FILE* out) {
     fprintf(out,"%f\n",e.associated_Data2);
 }
 
-void parcoursInfixe2(PAVL2 a, FILE* out) {
+void infixPath2(PAVL2 a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixe2(a->fg,out);
-    traiter2(a->elmt,out);
+    infixPath2(a->fg,out);
+    treat2(a->elmt,out);
     free(a);
-    parcoursInfixe2(a->fd,out);
+    infixPath2(a->fd,out);
 }
 }
 
-void parcoursInfixeR2(PAVL2 a, FILE* out) {
+void infixPathR2(PAVL2 a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixeR2(a->fd,out); 
-    traiter2(a->elmt,out);
-    parcoursInfixeR2(a->fg,out);
+    infixPathR2(a->fd,out); 
+    treat2(a->elmt,out);
+    infixPathR2(a->fg,out);
 }
 }
 
 
 
-PAVL2 creerArbre2(Data2 e){
-    PAVL2 noeud ;
-    noeud=malloc(sizeof(AVL2));
-    if(noeud==NULL){
+PAVL2 createTree2(Data2 e){
+    PAVL2 tree ;
+    tree=malloc(sizeof(AVL2));
+    if(tree==NULL){
         exit(1);
     }
-    noeud->elmt=e;
-    noeud->fg= NULL;
-    noeud->fd= NULL;
-    noeud->equilibre= 0;
-    noeud->elmt.average_increment=1;
-    return noeud;
+    tree->elmt=e;
+    tree->fg= NULL;
+    tree->fd= NULL;
+    tree->balance= 0;
+    tree->elmt.average_increment=1;
+    return tree;
 }
 
-PAVL2 rotationGauche2(PAVL2 a){
+PAVL2 LeftRotation2(PAVL2 a){
     PAVL2 pivot; 
     float eq_a, eq_p;
 
     pivot = a->fd;
     a->fd = pivot->fg;
     pivot->fg = a;
-    eq_a = a->equilibre;
-    eq_p = pivot->equilibre;
-    a->equilibre = eq_a - max(eq_p, 0) - 1;
-    pivot->equilibre = min(min( eq_a-2, eq_a+eq_p-2), eq_p-1 );
+    eq_a = a->balance;
+    eq_p = pivot->balance;
+    a->balance = eq_a - max(eq_p, 0) - 1;
+    pivot->balance = min(min( eq_a-2, eq_a+eq_p-2), eq_p-1 );
     a = pivot;
     return a;
     }
 
-    PAVL2 rotationDroite2(PAVL2 a){
+    PAVL2 RightRotation2(PAVL2 a){
     PAVL2 pivot ;
     float eq_a, eq_p;
 
     pivot = a->fg;
     a->fg = pivot->fd;
     pivot->fd = a;
-    eq_a = a->equilibre;
-    eq_p = pivot->equilibre;
-    a->equilibre = eq_a - min(eq_p, 0) + 1;
-    pivot->equilibre = max(max( eq_a+2, eq_a+eq_p+2), eq_p+1 );
+    eq_a = a->balance;
+    eq_p = pivot->balance;
+    a->balance = eq_a - min(eq_p, 0) + 1;
+    pivot->balance = max(max( eq_a+2, eq_a+eq_p+2), eq_p+1 );
     a = pivot;
     return a;
 }
 
-PAVL2 doubleRotationGauche2(PAVL2 a){
-    a->fd = rotationDroite2(a->fd);
-     return rotationGauche2(a);
+PAVL2 doubleLeftRotation2(PAVL2 a){
+    a->fd = RightRotation2(a->fd);
+     return LeftRotation2(a);
 }
 
-PAVL2 doubleRotationDroite2(PAVL2 a){
-    a->fg = rotationGauche2(a->fg);
-     return rotationDroite2(a);
+PAVL2 doubleRightRotation2(PAVL2 a){
+    a->fg = LeftRotation2(a->fg);
+     return RightRotation2(a);
 }
 
-PAVL2 equilibrerAVL2(PAVL2 a){
+PAVL2 balanceAVL2(PAVL2 a){
 
-    if (a->equilibre >=  2){
-        if (a->fd->equilibre >= 0){
-            return rotationGauche2(a);
+    if (a->balance >=  2){
+        if (a->fd->balance >= 0){
+            return LeftRotation2(a);
         }
 
-        else return doubleRotationGauche2(a);
+        else return doubleLeftRotation2(a);
     }
-    else if (a->equilibre  <=  -2){ 
-        if (a->fg->equilibre <= 0){
-            return rotationDroite2(a);
+    else if (a->balance  <=  -2){ 
+        if (a->fg->balance <= 0){
+            return RightRotation2(a);
         }
 
     
 
-        else return doubleRotationDroite2(a);
+        else return doubleRightRotation2(a);
     }
     return a;
 }
@@ -113,7 +113,7 @@ PAVL2 insertionAVLAverage2(PAVL2 a,Data2 e, int* h){
 
     if (a== NULL){
         *h=1;
-        return creerArbre2(e);
+        return createTree2(e);
     }
     else if (e.date2 < a->elmt.date2){
     a->fg=insertionAVLAverage2(a->fg, e, h);
@@ -130,9 +130,9 @@ PAVL2 insertionAVLAverage2(PAVL2 a,Data2 e, int* h){
         return a;
     }
     if (*h != 0){
-        a->equilibre = a->equilibre + *h;
-        a=equilibrerAVL2(a);
-        if (a->equilibre== 0){
+        a->balance = a->balance + *h;
+        a=balanceAVL2(a);
+        if (a->balance== 0){
             *h = 0;
         }
         else *h = 1;
