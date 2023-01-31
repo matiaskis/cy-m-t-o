@@ -8,7 +8,7 @@
 typedef struct data_m{
     int station;
     int moisture;
-    int doublon[61];
+    int duplicate[61];
     int counter;
 }Data_m;
 
