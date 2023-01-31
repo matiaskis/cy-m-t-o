@@ -75,12 +75,12 @@ PAVL1 leftRotation(PAVL1 a){
     return a;
 }
 
-PAVL1 doubleleftRotation(PAVL1 a){
+PAVL1 doubleLeftRotation(PAVL1 a){
     a->fd = rightRotation(a->fd);
      return leftRotation(a);
 }
 
-PAVL1 doublerightRotation(PAVL1 a){
+PAVL1 doubleRightRotation(PAVL1 a){
     a->fg = leftRotation(a->fg);
      return rightRotation(a);
 }
@@ -92,7 +92,7 @@ PAVL1 balanceAVL1(PAVL1 a){
             return leftRotation(a);
         }
 
-        else return doubleleftRotation(a);
+        else return doubleLeftRotation(a);
     }
     else if (a->balance  <=  -2){ 
         if (a->fg->balance <= 0){
@@ -101,7 +101,7 @@ PAVL1 balanceAVL1(PAVL1 a){
 
     
 
-        else return doublerightRotation(a);
+        else return doubleLightRotation(a);
     }
     return a;
 }
