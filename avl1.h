@@ -105,7 +105,7 @@ PAVL1 balanceAVL1(PAVL1 a);
      * @brief                       this function is used to insert an element in the tree, keeping the max value of associated_data                                         
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
-     * @param h                     pointer relative to an integer value used to calculate the balance within th tree
+     * @param h                     pointer relative to an integer value used to calculate the balance within the tree
      * @return                      pointer relative to the tree
      */
 PAVL1 insertionAVL1Max(PAVL1 a,Data1 e, int* h);
@@ -114,7 +114,7 @@ PAVL1 insertionAVL1Max(PAVL1 a,Data1 e, int* h);
      * @brief                       this function is used to insert an element in the tree, keeping the min value of associated_data                                         
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
-     * @param h                     pointer relative to an integer value used to calculate the balance within th tree
+     * @param h                     pointer relative to an integer value used to calculate the balance within the tree
      * @return                      pointer relative to the tree
      */
 PAVL1 insertionAVL1Min(PAVL1 a,Data1 e, int* h);
@@ -123,7 +123,7 @@ PAVL1 insertionAVL1Min(PAVL1 a,Data1 e, int* h);
      * @brief                       this function is used to insert an element in the tree,keeping the the gross value of all associated_data                                       
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
-     * @param h                     pointer relative to an integer value used to calculate the balance within th tree
+     * @param h                     pointer relative to an integer value used to calculate the balance within the tree
      * @return                      pointer relative to the tree
      */
 PAVL1 insertionAVL1Average(PAVL1 a,Data1 e, int* h);
