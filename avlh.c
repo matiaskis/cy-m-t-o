@@ -8,14 +8,14 @@ void treat_h(Data_h e,FILE* out) {
     fprintf(out,"%d\n",e.height);
    // fprintf(out,"%f ",e.latitude);
     //fprintf(out,"%f\n",e.longitude);
-    if(e.doublon!=0){
-        fprintf(out,"%d ",e.doublon);
+    if(e.duplicate!=0){
+        fprintf(out,"%d ",e.duplicate);
         fprintf(out,"%d\n",e.height);
         //fprintf(out,"%f ",e.latitude);
         //fprintf(out,"%f\n",e.longitude);
     }
-    if(e.doublon2 !=0 ){
-        fprintf(out,"%d ",e.doublon2);
+    if(e.duplicate2 !=0 ){
+        fprintf(out,"%d ",e.duplicate2);
         fprintf(out,"%d\n",e.height);
     }
 }
@@ -158,10 +158,10 @@ PAVL_H insertionAVLHeight(PAVL_H a,Data_h e, int* h){
     }
     else{
         if(e.station!=a->elmt.station){
-            if(e.station != a->elmt.doublon && a->elmt.doublon != 0 ){
-                a->elmt.doublon2=e.station;
+            if(e.station != a->elmt.duplicate && a->elmt.duplicate != 0 ){
+                a->elmt.duplicate2=e.station;
             }
-            else a->elmt.doublon=e.station;
+            else a->elmt.duplicate=e.station;
         }
         *h=0;
         return a;
