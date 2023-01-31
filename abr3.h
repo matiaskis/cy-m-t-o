@@ -6,7 +6,7 @@
 
 typedef struct data_abr3{
     int station;
-    float associated_Data;
+    float associated_data;
     long date;
 }Data_abr3;
 
