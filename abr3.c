@@ -8,7 +8,7 @@ void treat_abr3(Data_abr3 e,FILE* out){
     y=((e.date)-e.date%1000000)/1000000;
     fprintf(out,"%ld/%ld/%ld %ld:00:00 ",d,m,y,h);
     fprintf(out,"%d ",e.station);
-    fprintf(out,"%f\n",e.associated_Data3);    
+    fprintf(out,"%f\n",e.associated_data);    
 }
 
 void secondInfixPath(PABR3 a,FILE * out){
