@@ -1,4 +1,3 @@
-
 #include "avl1.h"
 #include "avlM.h"
 
@@ -9,7 +8,7 @@ void treat_m(int count,Data_m e,FILE* out) {
     fprintf(out,"%d\n",e.moisture);
    
     for(int i=0; i < count; i++ ){
-        fprintf(out,"%d ",e.doublon[i]);
+        fprintf(out,"%d ",e.duplicate[i]);
         fprintf(out,"%d\n",e.moisture);
         
     }
@@ -210,7 +209,7 @@ PAVL_m insertionAVLM(PAVL_m a,Data_m e, int* h){
         
     }
     else{
-        a->elmt.doublon[a->elmt.counter]=e.station;
+        a->elmt.duplicate[a->elmt.counter]=e.station;
         a->elmt.counter=a->elmt.counter+1;
                   
         
