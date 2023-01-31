@@ -7,7 +7,7 @@ void treat_m(int count,Data_abrm e,FILE* out) {
     fprintf(out,"%d\n",e.moisture);
    
     for(int i=0; i < count; i++ ){
-        fprintf(out,"%d ",e.doublon[i]);
+        fprintf(out,"%d ",e.duplicate[i]);
         fprintf(out,"%d\n",e.moisture);
         
     }
@@ -112,7 +112,7 @@ PABR_m insertionABRM(PABR_m a,Data_abrm e){
         
     }
     else{
-        a->elmt.doublon[a->elmt.counter]=e.station;
+        a->elmt.duplicate[a->elmt.counter]=e.station;
         a->elmt.counter=a->elmt.counter+1;
                   
         return a;
