@@ -51,7 +51,7 @@ typedef ABR2* PABR2;
     PABR2 createTree_abr2(Data_abr2 e);
     
     /*!
-     * @brief                       this function is used to insert a element in the tree, keeping the the gross value of all associated_data                                          
+     * @brief                       this function is used to insert an element in the tree, keeping the the gross value of all associated_data                                          
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
