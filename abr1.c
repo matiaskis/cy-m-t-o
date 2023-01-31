@@ -1,42 +1,42 @@
 #include "abr1.h"
 
 
-void traiter_abr1(Data1ABR e,FILE* out) {
+void treat_abr1(Data1ABR e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%f\n",e.associated_data);
 }
 
-void parcoursInfixe_abr1(PABR1 a, FILE* out) {
+void infixPath_abr1(PABR1 a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixe_abr1(a->fg,out);
+    infixPath_abr1(a->fg,out);
     traite_abr1r(a->elmt,out);
     free(a);
-    parcoursInfixe_abr1(a->fd,out);
+    infixPath_abr1(a->fd,out);
 }
 }
 
-void parcoursInfixeR_abr1(PABR1 a, FILE* out) {
+void infixPathR_abr1(PABR1 a, FILE* out) {
 if (a!=NULL) {
-    parcoursInfixeR_abr1(a->fd,out); 
-    traiter_abr1(a->elmt,out);
+    infixPathR_abr1(a->fd,out); 
+    treat_abr1(a->elmt,out);
     free(a);
-    parcoursInfixeR_abr1(a->fg,out);
+    infixPathR_abr1(a->fg,out);
 }
 }
 
 
 
-PABR1 creerArbre_abr1(Data1ABR e){
-    PABR1 noeud ;
-    noeud=malloc(sizeof(ABR1));
-    if(noeud==NULL){
+PABR1 createTree_abr1(Data1ABR e){
+    PABR1 tree ;
+    tree=malloc(sizeof(ABR1));
+    if(tree==NULL){
         exit(1);
     }
-    noeud->elmt=e;
-    noeud->fg= NULL;
-    noeud->fd= NULL;
-    noeud->elmt.average_increment=1;
-    return noeud;
+    tree->elmt=e;
+    tree->fg= NULL;
+    tree->fd= NULL;
+    tree->elmt.average_increment=1;
+    return tree;
 }
 
 
@@ -46,7 +46,7 @@ PABR1 creerArbre_abr1(Data1ABR e){
 PABR1 insertionMax_abr1(PABR1 a,Data1ABR e){
 
     if (a== NULL){
-        return creerArbre(e);
+        return createTree_abr1(e);
     }
     else if (e.station < a->elmt.station){
     a->fg=insertionMax_abr1(a->fg, e);
@@ -69,7 +69,7 @@ PABR1 insertionMin_abr1(PABR1 a,Data1ABR e){
 
     if (a== NULL){
 
-        return creerArbre_abr1(e);
+        return createTree_abr1(e);
     }
     else if (e.station < a->elmt.station){
     a->fg=insertionMin_abr1(a->fg, e);
@@ -94,7 +94,7 @@ PABR1 insertionMin_abr1(PABR1 a,Data1ABR e){
 PABR1 insertionAverage_abr1(PABR1 a, Data1ABR e){
 
     if (a== NULL){
-        return creerArbre_abr1(e);
+        return createTree_abr1(e);
     }
     else if (e.station < a->elmt.station){
         a->fg=insertionAverage_abr1(a->fg, e);
