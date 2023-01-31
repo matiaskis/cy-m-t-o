@@ -89,7 +89,7 @@ PAVL2 balanceAVL2(PAVL2 a);
      * @brief                       this function is used to insert an element in the tree,keeping the the gross value of all associated_data                                       
      * @param  a                    pointer relative to the tree
      * @param  e                    element to insert
-     * @param h                     pointer relative to an integer value used to calculate the balance within th tree
+     * @param h                     pointer relative to an integer value used to calculate the balance within the tree
      * @return                      pointer relative to the tree
      */
 PAVL2 insertionAVLAverage2(PAVL2 a,Data2 e, int* h);
