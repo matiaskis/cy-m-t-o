@@ -98,7 +98,7 @@ if [ $8 -eq 1 ]; then
     field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
     rm field_number.csv
 
-    tail +2 station_wind0.csv |  awk -v w=$field_wind1 w2=$field_wind2 '{if($w != "" && $w2 != "" )  print $0;}' FS=";" > station_wind.csv
+    tail +2 station_wind0.csv |  awk -v w=$field_wind1 -v w2=$field_wind2 '{if($w != "" && $w2 != "" )  print $0;}' FS=";" > station_wind.csv
     rm station_wind0.csv
     trait_argument_d_country $2 $3 $4 $5 station_wind.csv $field_date $field_coo
 
@@ -192,15 +192,14 @@ elif [ $9 -eq 3 ]; then
 
     trait_argument_d_country $2 $3 $4 $5 station_pres_date.csv $field_date $field_coo
     rm station_pres_date.csv
-    field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+   
     rm field_number.csv
 
     cut -d';' -f$field_pressure,$field_date,$field_station cut_c.csv > station_pres_date2.csv
     rm cut_c.csv
     
 
-    awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";" station_pres_date2.csv > pres_date3.csv
+    awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_pres_date2.csv > pres_date3.csv
     rm station_pres_date2.csv
 
     ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 1
@@ -538,7 +537,7 @@ check_argument(){
                         
                     ;;
                     #wind
-                    w) if [ ! $(grep DIRECTIONDUVENTMOYEN10MN check_field.csv) ] || [ ! $(grep -x VITESSEDUVENTMOYEN10MN check_field.csv) ] ; then
+                    w) if [ ! $(grep DIRECTIONDUVENTMOYEN10MN check_field.csv) ] || [ ! $(grep  VITESSEDUVENTMOYEN10MN check_field.csv) ] ; then
                             echo "the field direction du vent moyen 10 mn or vitesse du vent moyen 10 mn don't exist"
                             w=0;
                         else
