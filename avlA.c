@@ -3,7 +3,7 @@
 
 void treatA(DataA1 e,FILE* out) {
     fprintf(out,"%d ",e.station);
-    fprintf(out,"%f\n",e.associated_DataA1);
+    fprintf(out,"%f ",e.associated_DataA1);
     fprintf(out,"%f\n",e.associated_DataA2);
 }
 
