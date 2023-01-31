@@ -2,10 +2,10 @@
 
 void treat_abr3(Data_abr3 e,FILE* out){
     long h,d,m,y;
-    h=((e.date_abr3%100));
-    d=((e.date_abr3%10000)-e.date_abr3%100)/100;
-    m=((e.date_abr3%1000000)-e.date_abr3%10000)/10000;
-    y=((e.date_abr3)-e.date_abr3%1000000)/1000000;
+    h=((e.date%100));
+    d=((e.date%10000)-e.date%100)/100;
+    m=((e.date%1000000)-e.date%10000)/10000;
+    y=((e.date)-e.date%1000000)/1000000;
     fprintf(out,"%ld/%ld/%ld %ld:00:00 ",d,m,y,h);
     fprintf(out,"%d ",e.station);
     fprintf(out,"%f\n",e.associated_Data3);    
@@ -98,12 +98,12 @@ PABR3 insertionABR_oabr3(PABR3 a,Data_abr3 e){
      
         return createTreeABR_oabr3(e);
     }
-    else if (e.date_abr3 < a->elmt.date_abr3){
+    else if (e.date < a->elmt.date){
         a->fg=insertion_oabr3(a->fg, e);
      
 
     }
-    else if(e.date_abr3 > a->elmt.date_abr3){
+    else if(e.date > a->elmt.date){
         a->fd=insertion_oabr3(a->fd, e);
     }
     else{
