@@ -12,18 +12,17 @@ typedef struct data_abr2{
 }Data_abr2;
 
 typedef struct abr2{
-    Data elmt;
+    Data_abr2 elmt;
     struct abr2 * fg;
     struct abr2 * fd;
-    int equilibre;
 }ABR2;
 
 typedef ABR2* PABR2;
 
-void traiter_abr2(Data_abr2 e,FILE* out) ;
-void parcoursInfixe_abr2(PABR2 a, FILE* out);
-void parcoursInfixeR_abr2(PABR2 a, FILE* out);
-PABR2 creerArbre_abr2(Data_abr2 e);
+void treat_abr2(Data_abr2 e,FILE* out) ;
+void infixPath_abr2(PABR2 a, FILE* out);
+void infixPathR_abr2(PABR2 a, FILE* out);
+PABR2 createTree_abr2(Data_abr2 e);
 PABR2 insertionAverage_abr2(PABR2 a, Data_abr2 e);
 void calculateAverage_abr2(PABR2 a);
 #endif
