@@ -5,13 +5,15 @@
 #include "avlh.h"
 #include "avl2.h"
 #include "avl3.h"
+#include "avlM.h"
+#include "avlA.h"
 
 int main(int argc, char* argv[]){
     
     int h;
     int station; // tous sauf avl2
     float associated_data; // tous
-    int height; //avl1
+    int height, moisture; //avl1
     long date; //avl2 et 3
     int g;//avl3
 
@@ -23,9 +25,13 @@ int main(int argc, char* argv[]){
     PAVL2 a2;
     PAVL3 a3;
     Data_h data_h;
+    PAVL_m am;
+    Data_m data_m;
     
 
     int sort_option=atoi(argv[3]);
+    int sort_option2;
+
     int display_option=atoi(argv[4]);
 
     FILE* data_file=fopen(argv[1],"r+");
@@ -113,7 +119,38 @@ int main(int argc, char* argv[]){
         }
         else parcoursInfixeR3(a3,output_file);
     }
-    
+    else if(sort_option==7){
+        sort_option2=atoi(argv[5]);
+
+        if(sort_option2 == 1){
+            while (fscanf(data_file,"%d;",&station) == 1){
+                fscanf(data_file,"%d",&moisture);
+                data_m.station=station;
+                data_m.moisture=moisture;
+                am=insertionAVLMMax(am,data_m,&h);
+            }
+            if(display_option==1){
+                parcoursInfixe_m2(am,output_file);
+            }
+            else parcoursInfixeR_m2(am,output_file);
+        }
+        else{
+            while (fscanf(data_file,"%d;",&station) == 1){
+                fscanf(data_file,"%d",&moisture);
+                data_m.station=station;
+                data_m.moisture=moisture;
+                am=insertionAVLM(am,data_m,&h);
+
+            }
+            if(display_option==1){
+                parcoursInfixe_m(am,output_file);
+            }
+            else parcoursInfixeR_m(am,output_file);
+        }
+
+        
+       
+    }
     
     fclose(data_file);
     fclose(output_file);
