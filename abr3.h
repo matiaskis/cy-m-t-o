@@ -80,7 +80,7 @@ typedef ABR3* PABR3;
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
      */
-    PABR3 insertionABR3SecondTree(PABR3 a,Data3 e);
+    PABR3 insertionABR3SecondTree(PABR3 a,Data_abr3 e);
     
     /*!
      * @brief                       this function is used to insert an element in the first tree                                      
@@ -88,5 +88,5 @@ typedef ABR3* PABR3;
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
      */
-    PABR3 insertionABR_oabr3(PABR3 a,Data3 e);
+    PABR3 insertionABR_oabr3(PABR3 a,Data_abr3 e);
 #endif
