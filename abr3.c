@@ -72,7 +72,7 @@ PABR3 createTree_oabr3(Data_abr3 e){
     return tree;
 }
 
-PABR3 insertionABR3SecondTree(PABR3 a,Data3 e){
+PABR3 insertionABR3SecondTree(PABR3 a,Data_abr3 e){
 
     if (a== NULL){
       
@@ -92,7 +92,7 @@ PABR3 insertionABR3SecondTree(PABR3 a,Data3 e){
     return a;
 }
 
-PABR3 insertionABR_oabr3(PABR3 a,Data3 e){
+PABR3 insertionABR_oabr3(PABR3 a,Data_abr3 e){
 
     if (a== NULL){
      
