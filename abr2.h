@@ -19,10 +19,49 @@ typedef struct abr2{
 
 typedef ABR2* PABR2;
 
-void treat_abr2(Data_abr2 e,FILE* out) ;
-void infixPath_abr2(PABR2 a, FILE* out);
-void infixPathR_abr2(PABR2 a, FILE* out);
-PABR2 createTree_abr2(Data_abr2 e);
-PABR2 insertionAverage_abr2(PABR2 a, Data_abr2 e);
-void calculateAverage_abr2(PABR2 a);
+    /*!
+     * @brief                       this function is used to write all values needed in the output file                                            
+     * @param  e                    current element written
+     * @param  out                  pointer relative to ouput file
+     * @return                      nothing
+     */
+    void treat_abr2(Data_abr2 e,FILE* out) ;
+    
+    /*!
+     * @brief                       this function is used to browse into  the tree                                            
+     * @param  a                    pointer relative to the tree
+     * @param  out                  pointer relative to ouput file
+     * @return                      nothing
+     */
+    void infixPath_abr2(PABR2 a, FILE* out);
+
+    /*!
+     * @brief                       this function is used to browse into  the tree but in reverse                                           
+     * @param  a                    pointer relative to the tree
+     * @param  out                  pointer relative to ouput file
+     * @return                      nothing
+     */
+    void infixPathR_abr2(PABR2 a, FILE* out);
+
+    /*!
+     * @brief                       this function is used to create a new tree                                         
+     * @param  e                    element you want to insert first in the tree
+     * @return                      pointer relative to the tree
+     */
+    PABR2 createTree_abr2(Data_abr2 e);
+    
+    /*!
+     * @brief                       this function is used to insert a element in the tree, keeping the the gross value of all associated_data                                          
+     * @param  a                    pointer relative to the tree
+     * @param  e                    element to insert
+     * @return                      pointer relative to the tree
+     */
+    PABR2 insertionAverage_abr2(PABR2 a, Data_abr2 e);
+    
+    /*!
+     * @brief                       this function is used to calculate the average of the associated data in each element of the tree                                         
+     * @param  a                    pointer relative to the tree
+     * @return                      nothing
+     */
+    void calculateAverage_abr2(PABR2 a);
 #endif
