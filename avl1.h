@@ -25,7 +25,7 @@ typedef AVL1* PAVL1;
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-void traiter(Data1 e,FILE* out);
+void treat(Data1 e,FILE* out);
 
 /*!
      * @brief                       this function is used to browse into  the tree                                            
@@ -33,7 +33,7 @@ void traiter(Data1 e,FILE* out);
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-void parcoursInfixe(PAVL1 a, FILE* out);
+void infixPath(PAVL1 a, FILE* out);
 
  /*!
      * @brief                       this function is used to browse into  the tree but in reverse                                           
@@ -41,7 +41,7 @@ void parcoursInfixe(PAVL1 a, FILE* out);
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-void parcoursInfixeR(PAVL1 a, FILE* out);
+void infixPathR(PAVL1 a, FILE* out);
 
  /*!
      * @brief                       this function is used to return the max of two integer value                                          
