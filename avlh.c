@@ -1,4 +1,5 @@
 
+
 #include "avlh.h"
 #include "avl1.h"
  
@@ -118,7 +119,7 @@ PAVL_H doubleRightRotation_h(PAVL_H a){
 
  
 
-PAVL_H balancerAVL_h(PAVL_H a){
+PAVL_H balanceAVL_h(PAVL_H a){
 
  
 
@@ -177,3 +178,4 @@ PAVL_H insertionAVLHeight(PAVL_H a,Data_h e, int* h){
     
     return a;
     }
+
