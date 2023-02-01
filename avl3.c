@@ -188,7 +188,7 @@ PAVL3 insertionAVL3date(PAVL3 a,Data3 e, int* h,int * g){
     }
     if (*h != 0){
         a->balance = a->balance + *h;
-        a=balancerAVL3(a);
+        a=balanceAVL3(a);
         if (a->balance== 0){
             *h = 0;
         }
@@ -197,4 +197,6 @@ PAVL3 insertionAVL3date(PAVL3 a,Data3 e, int* h,int * g){
     
     return a;
     }
+    
+
     
