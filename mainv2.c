@@ -16,6 +16,7 @@ int main(int argc, char* argv[]){
     int height, moisture; //avl1
     long date; //avl2 et 3
     int g;//avl3
+    float latitude, longitude;
 
     PAVL1 a1;
     PAVL_H ah;
@@ -82,9 +83,13 @@ int main(int argc, char* argv[]){
     else if(sort_option==4){
 
         while(fscanf(data_file,"%d;",&station)==1){
+            fscanf(data_file,"%f,",&latitude);
+            fscanf(data_file,"%f;",&longitude);
             fscanf(data_file,"%d",&height);
             data_h.station=station;
             data_h.height=height;
+            data_h.latitude=latitude;
+            data_h.longitude=longitude;
             ah=insertionAVLHeight(ah,data_h,&h);
         }
         if(display_option==1){
@@ -126,9 +131,13 @@ int main(int argc, char* argv[]){
 
         if(sort_option2 == 1){
             while (fscanf(data_file,"%d;",&station) == 1){
-                fscanf(data_file,"%d",&moisture);
+                fscanf(data_file,"%d;",&moisture);
+                fscanf(data_file,"%f,",&latitude);
+                fscanf(data_file,"%f",&longitude);
                 data_m.station=station;
                 data_m.moisture=moisture;
+                data_m.latitude=latitude;
+                data_m.longitude=longitude;
                 am=insertionAVLMMax(am,data_m,&h);
             }
             if(display_option==1){
@@ -138,9 +147,13 @@ int main(int argc, char* argv[]){
         }
         else{
             while (fscanf(data_file,"%d;",&station) == 1){
-                fscanf(data_file,"%d",&moisture);
+                fscanf(data_file,"%d;",&moisture);
+                fscanf(data_file,"%f,",&latitude);
+                fscanf(data_file,"%f",&longitude);
                 data_m.station=station;
                 data_m.moisture=moisture;
+                data_m.latitude=latitude;
+                data_m.longitude=longitude;
                 am=insertionAVLM(am,data_m,&h);
 
             }
@@ -157,10 +170,14 @@ int main(int argc, char* argv[]){
     else if(sort_option==8){
         while (fscanf(data_file,"%d;",&station) == 1){
             fscanf(data_file,"%f;",&associated_data);
-            fscanf(data_file,"%f",&associated_data2);
+            fscanf(data_file,"%f;",&associated_data2);
+            fscanf(data_file,"%f,",&latitude);
+            fscanf(data_file,"%f",&longitude);
             dataA1.station=station;
             dataA1.associated_DataA1=associated_data;
             dataA1.associated_DataA2=associated_data2;
+            dataA1.latitude=latitude;
+            dataA1.longitude=longitude;
             aa=insertionAVLAAAverage(aa,dataA1,&h);
         }
         calculateAverageA(aa);
@@ -174,4 +191,5 @@ int main(int argc, char* argv[]){
     fclose(output_file);
     return 0;
 }
+
 
