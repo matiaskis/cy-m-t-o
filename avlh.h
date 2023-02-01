@@ -5,13 +5,14 @@
 #include <string.h>
 
 
+
 typedef struct data_h{
     int station;
     int height;
-    //float latitude;
-    //float longitude;
-    int duplicate;
-    int duplicate2;
+    float latitude;
+    float longitude;
+    float duplicate[3];
+    float duplicate2[3];
 }Data_h;
 
 typedef struct avl_h{
@@ -98,4 +99,5 @@ PAVL_H balanceAVL_h(PAVL_H a);
      */
 PAVL_H insertionAVLHeight(PAVL_H a,Data_h e, int* h);
 #endif
+
 
