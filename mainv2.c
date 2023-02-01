@@ -61,7 +61,7 @@ int main(int argc, char* argv[]){
             a1=insertionAVL1Min(a1,data1,&h);
         }
         if(display_option==1){
-        infixPath(a1,output_file);
+            infixPath(a1,output_file);
         }
         else infixPathR(a1,output_file);
         }
@@ -75,7 +75,7 @@ int main(int argc, char* argv[]){
         }
         calculateAverage(a1);
         if(display_option==1){
-        infixPath(a1,output_file);
+            infixPath(a1,output_file);
         }
         else infixPathR(a1,output_file);
     }
@@ -88,7 +88,7 @@ int main(int argc, char* argv[]){
             ah=insertionAVLHeight(ah,data_h,&h);
         }
         if(display_option==1){
-        infixPath_h(ah,output_file);
+            infixPath_h(ah,output_file);
         }
         else infixPathR_h(ah,output_file);
     }
@@ -144,6 +144,7 @@ int main(int argc, char* argv[]){
                 am=insertionAVLM(am,data_m,&h);
 
             }
+
             if(display_option==1){
                 infixPath_m(am,output_file);
             }
@@ -155,13 +156,14 @@ int main(int argc, char* argv[]){
     }
     else if(sort_option==8){
         while (fscanf(data_file,"%d;",&station) == 1){
-            fscanf(data_file,"%f",&associated_data);
+            fscanf(data_file,"%f;",&associated_data);
             fscanf(data_file,"%f",&associated_data2);
             dataA1.station=station;
             dataA1.associated_DataA1=associated_data;
             dataA1.associated_DataA2=associated_data2;
             aa=insertionAVLAAAverage(aa,dataA1,&h);
         }
+        calculateAverageA(aa);
         if(display_option==1){
             infixPathA(aa,output_file);
         }
