@@ -5,21 +5,21 @@ void treat(Data1 e,FILE* out) {
     fprintf(out,"%f\n",e.associated_Data1);
 }
 
-void infixePath(PAVL1 a, FILE* out) {
+void infixPath(PAVL1 a, FILE* out) {
 if (a!=NULL) {
-    infixePath(a->fg,out);
+    infixPath(a->fg,out);
     treat(a->elmt,out);
     free(a);
-    infixePath(a->fd,out);
+    infixPath(a->fd,out);
 }
 }
 
-void infixePathR(PAVL1 a, FILE* out) {
+void infixPathR(PAVL1 a, FILE* out) {
 if (a!=NULL) {
-    infixePathR(a->fd,out); 
+    infixPathR(a->fd,out); 
     treat(a->elmt,out);
     free(a);
-    infixePathR(a->fg,out);
+    infixPathR(a->fg,out);
 }
 }
 
@@ -101,7 +101,7 @@ PAVL1 balanceAVL1(PAVL1 a){
 
     
 
-        else return doubleLightRotation(a);
+        else return doubleRightRotation(a);
     }
     return a;
 }
@@ -213,3 +213,4 @@ void calculateAverage(PAVL1 a){
     calculateAverage(a->fd);
     }
 }
+
