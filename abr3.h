@@ -34,7 +34,7 @@ typedef ABR3* PABR3;
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-    void secondInfixPath(PABR3 a,FILE * out);
+    void secondInfixPath_abr3(PABR3 a,FILE * out);
 
     /*!
      * @brief                       this function is used to browse into the tree                                        
@@ -50,7 +50,7 @@ typedef ABR3* PABR3;
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-    void secondinfixPathR_abr3(PABR3 a,FILE * out);
+    void secondInfixPathR_abr3(PABR3 a,FILE * out);
     
     /*!
      * @brief                       this function is used to browse into the tree in reverse                                       
@@ -90,3 +90,4 @@ typedef ABR3* PABR3;
      */
     PABR3 insertionABR_oabr3(PABR3 a,Data_abr3 e);
 #endif
+
