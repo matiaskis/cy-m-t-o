@@ -276,18 +276,18 @@ elif [ ${@: -1} -eq 3 ]; then
     
     head -1 station_temp_date0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv 
     
-    field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" field_number.csv)
+    field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATURE(°C)")print i;}' FS=";" field_number.csv)
     field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
     field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     rm field_number.csv
     
-
+    
     tail +2 station_temp_date0.csv | awk -v p=$field_temp '{if($p != "" ) print $0;}' FS=";" > station_temp_date.csv
     rm station_temp_date0.csv
 
     trait_argument_d_country $2 $3 $4 $5 station_temp_date.csv $field_date $field_coo
-    rm station_temp_date.csv
+    
 
    
 
@@ -298,7 +298,7 @@ elif [ ${@: -1} -eq 3 ]; then
     awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_temp_date2.csv > temp_date3.csv
     rm station_temp_date2.csv
 
-    ./exec temp_date3.csv gnuplot_station_pres_date.csv 6 1
+    ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 1
     rm temp_date3.csv;
     #gnuplot
 
@@ -711,3 +711,4 @@ check_argument(){
 
 make -f Makefile.mak
 check_argument $@
+
