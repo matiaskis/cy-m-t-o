@@ -1,12 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "avlh.h"
-#include "avl1.h"
+#include "abrh.h"
 
  
 
-void treat_abrh(Date_abrh e,FILE* out) {
+void treat_abrh(Data_abrh e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%d\n",e.height);
    // fprintf(out,"%f ",e.latitude);
@@ -46,7 +42,7 @@ if (a!=NULL) {
 
 
 
-PABR_H createTree_abrh(Date_abrh e){
+PABR_H createTree_abrh(Data_abrh e){
     PABR_H tree ;
     tree=malloc(sizeof(ABR_H));
     if(tree==NULL){
@@ -55,14 +51,13 @@ PABR_H createTree_abrh(Date_abrh e){
     tree->elmt=e;
     tree->fg= NULL;
     tree->fd= NULL;
-    tree->equilibre= 0;
     return tree;
 }
 
 
 
 
-PABR_H insertionABRHeight(PABR_H a,Date_abrh e){
+PABR_H insertionABRHeight(PABR_H a,Data_abrh e){
 
     if (a== NULL){
    
@@ -90,3 +85,5 @@ PABR_H insertionABRHeight(PABR_H a,Date_abrh e){
     
     return a;
     }
+
+    
