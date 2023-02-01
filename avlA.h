@@ -9,6 +9,8 @@ typedef struct dataa1{
     float associated_DataA1;
     float associated_DataA2;
     int average_increment;
+    float latitude;
+    float longitude;
 }DataA1;
 
 typedef struct AVLAA{
