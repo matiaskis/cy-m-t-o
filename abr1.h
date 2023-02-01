@@ -81,3 +81,4 @@ typedef ABR1* PABR1;
      */
     void calculateAverage_abr1(PABR1 a);
 #endif
+
