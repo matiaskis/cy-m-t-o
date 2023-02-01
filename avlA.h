@@ -15,7 +15,7 @@ typedef struct AVLAA{
     DataA1 elmt;
     struct AVLAA * fg;
     struct AVLAA * fd;
-    int equilibre;
+    int balance;
 }AVLAA;
 
 typedef AVLAA* PAVLAA;
@@ -102,3 +102,4 @@ PAVLAA insertionAVLAAAverage(PAVLAA a,DataA1 e, int* h);
      */
 void calculateAverageA(PAVLAA a);
 #endif
+
