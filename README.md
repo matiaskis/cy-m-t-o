@@ -39,3 +39,5 @@ The shell script then uses gnuplot to create graphics.
 to execute the programm : ./s.sh -f input_file <option> <option>
 for exemple : ./s.sh -f input_file -p1 --avl -d 2012/03/24,2017/05/12
 (there is no order for the specified options)
+           
+be sure to have the latest versionn of awk to run this programm
