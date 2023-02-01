@@ -212,43 +212,28 @@ if [ ${@: -1} -eq 1 ]; then
 
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" check_field.csv)
     field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATURE(°C)")print i;}' FS=";" check_field.csv)
-    field_temp_max=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATUREMAXIMALESUR24HEURES(°C)")print i;}' FS=";" check_field.csv)
-    field_temp_min=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATUREMINIMALESUR24HEURES(°C)")print i;}' FS=";" check_field.csv)
-    cut -d";" -f$field_station,$field_date,$field_coo,$field_temp,$field_temp_max,$field_temp_min $1 > station_temp_ave0.csv
+    cut -d";" -f$field_station,$field_date,$field_coo,$field_temp $1 > station_temp_ave0.csv
 
     head -1 station_temp_ave0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv #avoir l'entete des 4 colonnes
     
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATURE(°C)")print i;}' FS=";" field_number.csv)
-    field_temp_max=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATUREMAXIMALESUR24HEURES(°C)")print i;}' FS=";" field_number.csv)
-    field_temp_min=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATUREMINIMALESUR24HEURES(°C)")print i;}' FS=";" field_number.csv)
+    
     field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
     field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     rm field_number.csv
 
     tail +2 station_temp_ave0.csv | awk -v ave=$field_temp '{if($ave != "" ) print $0;}' FS=";" > station_temp_ave.csv
-    tail +2 station_temp_ave0.csv | awk -v min=$field_temp_min '{if($min != "" ) print $0;}' FS=";" > station_temp_min.csv
-    tail +2 station_temp_ave0.csv | awk -v max=$field_temp_max '{if($max != "" ) print $0;}' FS=";" > station_temp_max.csv
     rm station_temp_ave0.csv
     
     trait_argument_d_country $2 $3 $4 $5 station_temp_ave.csv $field_date $field_coo   
     cut -d';' -f$field_station,$field_temp cut_c.csv > station_temp_ave2.csv
     rm cut_c.csv   
 
-    trait_argument_d_country $2 $3 $4 $5 station_temp_max.csv $field_date $field_coo   
-    cut -d';' -f$field_station,$field_temp_max cut_c.csv > station_temp_max2.csv
-    rm cut_c.csv 
-
-    trait_argument_d_country $2 $3 $4 $5 station_temp_min.csv $field_date $field_coo   
-    cut -d';' -f$field_station,$field_temp_min cut_c.csv > station_temp_min2.csv
-    rm cut_c.csv 
-
     ./exec station_temp_ave2.csv gnuplot_temp_ave.csv 3 1
-    ./exec station_temp_min2.csv gnuplot_temp_min.csv 2 1
-    ./exec station_temp_max2.csv gnuplot_temp_max.csv 1 1
+    ./exec station_temp_ave2.csv gnuplot_temp_min.csv 2 1
+    ./exec station_temp_ave2.csv gnuplot_temp_max.csv 1 1
 
-    rm station_temp_min2.csv 
-    rm station_temp_max2.csv
     rm station_temp_ave2.csv;
 
     #gnuplot pression_moyenne.sh
