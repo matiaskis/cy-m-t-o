@@ -5,20 +5,25 @@
 
 void treat_m(int count,Data_m e,FILE* out) {
     fprintf(out,"%d ",e.station);
+    fprintf(out,"%f ",e.latitude);
+    fprintf(out,"%f ",e.longitude);
     fprintf(out,"%d\n",e.moisture);
    
     for(int i=0; i < count; i++ ){
-        fprintf(out,"%d ",e.duplicate[i]);
+        fprintf(out,"%d ",(int)e.duplicates[i]);
+        fprintf(out,"%f ",e.duplicatela[i]);
+        fprintf(out,"%f ",e.duplicatelo[i]);
         fprintf(out,"%d\n",e.moisture);
-        
     }
       
     
   
 }
 void treat_m2(Data_m e,FILE* out) {
-    fprintf(out,"%d ",e.station);
-    fprintf(out,"%d\n",e.moisture);
+    fprintf(out,"%d;",e.station);
+    fprintf(out,"%d;",e.moisture);
+    fprintf(out,"%f,",e.latitude);
+    fprintf(out,"%f\n",e.longitude);
 }
  
 
@@ -67,7 +72,10 @@ PAVL_m createTree_m(Data_m e){
     if(tree==NULL){
         exit(1);
     }
-    tree->elmt=e;
+    tree->elmt.station=e.station;
+    tree->elmt.moisture=e.moisture;
+    tree->elmt.latitude=e.latitude;
+    tree->elmt.longitude=e.longitude;
     tree->fg= NULL;
     tree->fd= NULL;
     tree->balance= 0;
@@ -176,7 +184,7 @@ PAVL_m insertionAVLMMax(PAVL_m a,Data_m e, int* h){
     }
     else{
         if(e.moisture > a->elmt.moisture){
-            a->elmt=e;
+            a->elmt.moisture=e.moisture;
         }
         *h=0;
         return a;
@@ -209,7 +217,9 @@ PAVL_m insertionAVLM(PAVL_m a,Data_m e, int* h){
         
     }
     else{
-        a->elmt.duplicate[a->elmt.counter]=e.station;
+        a->elmt.duplicates[a->elmt.counter]=e.station;
+        a->elmt.duplicatela[a->elmt.counter]=e.latitude;
+        a->elmt.duplicatelo[a->elmt.counter]=e.longitude;
         a->elmt.counter=a->elmt.counter+1;
                   
         
@@ -229,4 +239,5 @@ PAVL_m insertionAVLM(PAVL_m a,Data_m e, int* h){
     
     return a;
     }
+
 
