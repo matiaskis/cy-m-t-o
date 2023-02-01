@@ -6,7 +6,7 @@
 #include <string.h>
 
 typedef struct data_abr2{
-    int station;
+    long date;
     float associated_data;
     int average_increment;
 }Data_abr2;
