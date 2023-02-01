@@ -11,36 +11,36 @@ void treat_abr3(Data_abr3 e,FILE* out){
     fprintf(out,"%f\n",e.associated_data);    
 }
 
-void secondInfixPath(PABR3 a,FILE * out){
+void secondInfixePath_abr3(PABR3 a,FILE * out){
     if (a!=NULL) {
-        secondInfixPath(a->fg,out);
+        secondInfixePath_abr3(a->fg,out);
         treat_abr3(a->elmt,out);
         free(a);
-        secondInfixPath(a->fd,out);
+        secondInfixePath_abr3(a->fd,out);
 }
 }
 
 void infixPath_abr3(PABR3 a, FILE* out) {
 if (a!=NULL) {
     infixPath_abr3(a->fg,out);
-    secondInfixPath(a->secondTree,out);
+    secondInfixePath_abr3(a->secondTree,out);
     infixPath_abr3(a->fd,out);
 }
 }
 
-void secondinfixPathR_abr3(PABR3 a,FILE * out){
+void secondInfixePathR_abr3(PABR3 a,FILE * out){
     if (a!=NULL) {
-        secondinfixPathR_abr3(a->fd,out);
+        secondInfixePathR_abr3(a->fd,out);
         treat_abr3(a->elmt,out);
         free(a);
-        secondinfixPathR_abr3(a->fg,out);
+        secondInfixePathR_abr3(a->fg,out);
 }
 }
 
 void infixPathR_abr3(PABR3 a, FILE* out) {
 if (a!=NULL) {
     infixPathR_abr3(a->fd,out); 
-    secondinfixPathR_abr3(a->secondTree,out);
+    secondInfixePathR_abr3(a->secondTree,out);
     infixPathR_abr3(a->fg,out);
 }
 }
@@ -68,7 +68,7 @@ PABR3 createTree_oabr3(Data_abr3 e){
     tree->elmt=e;
     tree->fg= NULL;
     tree->fd= NULL;
-    tree->secondTree=createTree_oabr3(e);
+    tree->secondTree=createTree_abr3(e);
     return tree;
 }
 
@@ -92,11 +92,11 @@ PABR3 insertionABR3SecondTree(PABR3 a,Data_abr3 e){
     return a;
 }
 
-PABR3 insertionABR_oabr3(PABR3 a,Data_abr3 e){
+PABR3 insertion_oabr3(PABR3 a,Data_abr3 e){
 
     if (a== NULL){
      
-        return createTreeABR_oabr3(e);
+        return createTree_oabr3(e);
     }
     else if (e.date < a->elmt.date){
         a->fg=insertion_oabr3(a->fg, e);
@@ -111,3 +111,4 @@ PABR3 insertionABR_oabr3(PABR3 a,Data_abr3 e){
     }
     return a;
     }
+
