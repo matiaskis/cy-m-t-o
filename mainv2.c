@@ -100,14 +100,14 @@ int main(int argc, char* argv[]){
             data2.associated_Data2=associated_data;
             a2=insertionAVLAverage2(a2,data2,&h);
         }
-
+        calculateAverage2(a2);
         if(display_option==1){
             infixPath2(a2,output_file);
         }
         else infixPathR2(a2,output_file);
     }
     else if(sort_option==6){
-         while (fscanf(data_file,"%d;",&station) == 1){
+         while (fscanf(data_file,"%d;",&station ) == 1){
             fscanf(data_file,"%ld;",&date);
             fscanf(data_file,"%f",&associated_data);
             data3.date3=date;
