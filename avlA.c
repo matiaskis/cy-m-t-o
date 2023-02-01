@@ -4,7 +4,9 @@
 void treatA(DataA1 e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%f ",e.associated_DataA1);
-    fprintf(out,"%f\n",e.associated_DataA2);
+    fprintf(out,"%f ",e.associated_DataA2);
+    fprintf(out,"%f ",e.latitude);
+    fprintf(out,"%f\n",e.longitude);
 }
 
 void infixPathA(PAVLAA a, FILE* out) {
@@ -106,7 +108,6 @@ PAVLAA insertionAVLAAAverage(PAVLAA a,DataA1 e, int* h){
     if (a== NULL){
         *h=1;
         return createTreeA(e);
-        printf("polo ");
     }
     else if (e.station < a->elmt.station){
     a->fg=insertionAVLAAAverage(a->fg, e, h);
@@ -143,4 +144,5 @@ void calculateAverageA(PAVLAA a){
     calculateAverageA(a->fd);
     }
 }
+
 
