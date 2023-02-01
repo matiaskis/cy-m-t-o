@@ -24,6 +24,7 @@ void infixPath_abr3(PABR3 a, FILE* out) {
 if (a!=NULL) {
     infixPath_abr3(a->fg,out);
     secondInfixePath_abr3(a->secondTree,out);
+    free(a);
     infixPath_abr3(a->fd,out);
 }
 }
@@ -41,6 +42,7 @@ void infixPathR_abr3(PABR3 a, FILE* out) {
 if (a!=NULL) {
     infixPathR_abr3(a->fd,out); 
     secondInfixePathR_abr3(a->secondTree,out);
+    free(a);
     infixPathR_abr3(a->fg,out);
 }
 }
