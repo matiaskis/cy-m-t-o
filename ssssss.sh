@@ -33,8 +33,8 @@ field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" che
     head -1 station_height0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv #avoir l'entete des 4 colonnes
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     field_height=$(awk '{for(i=1;i<=NF;i++)if($i == "ALTITUDE")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     rm field_number.csv
 
     tail +2 station_height0.csv  | awk -v h=$field_height '{if($h != "" ) print $0;}' FS=";" > station_height.csv #enlever espace
@@ -61,8 +61,8 @@ if [ $7 -eq 1 ]; then
     
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     field_moisture=$(awk '{for(i=1;i<=NF;i++)if($i == "HUMIDITÉ")print i;}' FS=";" field_number.csv)    
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     rm field_number.csv
 
     tail +2 station_m0.csv | awk -v m=$field_moisture '{if($m != "" ) print $0;}' FS=";"  > station_m.csv
@@ -94,8 +94,8 @@ if [ $8 -eq 1 ]; then
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     field_wind1=$(awk '{for(i=1;i<=NF;i++)if($i == "DIRECTIONDUVENTMOYEN10MN")print i;}' FS=";" field_number.csv)
     field_wind2=$(awk '{for(i=1;i<=NF;i++)if($i == "VITESSEDUVENTMOYEN10MN")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     rm field_number.csv
 
     tail +2 station_wind0.csv |  awk -v w=$field_wind1 -v w2=$field_wind2 '{if($w != "" && $w2 != "" )  print $0;}' FS=";" > station_wind.csv
@@ -122,8 +122,8 @@ if [ $9 -eq 1 ]; then
     
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     rm field_number.csv
 
     tail +2 station_pres_ave0.csv | awk -v ave=$field_pressure '{if($ave != "" ) print $0;}' FS=";" > station_pres_ave.csv
@@ -148,8 +148,8 @@ elif [ $9 -eq 2 ]; then
     head -1 pres_date0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv #avoir l'entete des 3 colonnes
     
     field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     
 
     tail +2 pres_date0.csv | awk -v p=$field_pressure '{if($p != "" ) print $0;}' FS=";" > pres_date.csv
@@ -176,30 +176,31 @@ elif [ $9 -eq 3 ]; then
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" check_field.csv)
     field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" check_field.csv)
 
-    cut -d";" -f$field_station,$field_date,$field_pressure,$field_coo  > station_pres_date0.csv
+    cut -d";" -f$field_station,$field_date,$field_pressure,$field_coo  $1 > station_pres_date0.csv
     
     head -1 station_pres_date0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv 
     
     field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     rm field_number.csv
     
-
-    tail +2 station_pres_date0.csv | awk -v p=$field_pressure '{if($p != "" ) print $0;}' FS=";" > station_pres_date.csv
+    
+    tail +2 station_pres_date0.csv | awk -v p=$field_pressure '{if($p != "" ) print $0;}' FS=";"  > station_pres_date.csv
     rm station_pres_date0.csv
 
     trait_argument_d_country $2 $3 $4 $5 station_pres_date.csv $field_date $field_coo
-    rm station_pres_date.csv
+    
    
-    rm field_number.csv
+    
 
     cut -d';' -f$field_pressure,$field_date,$field_station cut_c.csv > station_pres_date2.csv
     rm cut_c.csv
     
 
     awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_pres_date2.csv > pres_date3.csv
+
     rm station_pres_date2.csv
 
     ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 1
@@ -221,8 +222,8 @@ if [ ${@: -1} -eq 1 ]; then
     field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATURE(°C)")print i;}' FS=";" field_number.csv)
     field_temp_max=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATUREMAXIMALESUR24HEURES(°C)")print i;}' FS=";" field_number.csv)
     field_temp_min=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATUREMINIMALESUR24HEURES(°C)")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     rm field_number.csv
 
     tail +2 station_temp_ave0.csv | awk -v ave=$field_temp '{if($ave != "" ) print $0;}' FS=";" > station_temp_ave.csv
@@ -260,8 +261,8 @@ elif [ ${@: -1} -eq 2 ]; then
     head -1 temp_date0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv #avoir l'entete des 3 colonnes
     
     field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATURE(°C)")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     
 
     tail +2 temp_date0.csv | awk -v t=$field_temp '{if($p != "" ) print $0;}' FS=";" > temp_date.csv
@@ -286,13 +287,13 @@ elif [ ${@: -1} -eq 3 ]; then
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" check_field.csv)
     field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "TEMPÉRATURE(°C)")print i;}' FS=";" check_field.csv)
 
-    cut -d";" -f$field_station,$field_date,$field_temp,$field_coo  > station_temp_date0.csv
+    cut -d";" -f$field_station,$field_date,$field_temp,$field_coo $1 > station_temp_date0.csv
     
     head -1 station_temp_date0.csv | sed 's/.*/\U&/' | sed -e "s/ //g" > field_number.csv 
     
     field_temp=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" field_number.csv)
-    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" check_field.csv)
-    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" check_field.csv)
+    field_date=$(awk '{for(i=1;i<=NF;i++)if($i == "DATE")print i;}' FS=";" field_number.csv)
+    field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" field_number.csv)
     field_station=$(awk '{for(i=1;i<=NF;i++)if($i == "IDOMMSTATION")print i;}' FS=";" field_number.csv)
     rm field_number.csv
     
