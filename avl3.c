@@ -25,6 +25,7 @@ void infixPath3(PAVL3 a, FILE* out) {
 if (a!=NULL) {
     infixPath3(a->fg,out);
     secondInfixPath3(a->secondTree,out);
+    free(a);
     infixPath3(a->fd,out);
 }
 }
@@ -42,6 +43,7 @@ void infixPathR3(PAVL3 a, FILE* out) {
 if (a!=NULL) {
     infixPathR3(a->fd,out); 
     secondInfixPathR3(a->secondTree,out);
+    free(a);
     infixPathR3(a->fg,out);
 }
 }
