@@ -142,3 +142,4 @@ void calculateAverageA(PAVLAA a){
     calculateAverageA(a->fd);
     }
 }
+
