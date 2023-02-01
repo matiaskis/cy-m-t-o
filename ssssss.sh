@@ -44,9 +44,9 @@ field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" che
     cut -d';' -f$field_station,$field_height cut_c.csv > station_height2.csv  
     
     
-    rm cut_c.csv
+    #rm cut_c.csv
     ./exec station_height2.csv gnuplot_height.csv 4 2
-    rm station_height2.csv
+    #rm station_height2.csv
    
     #fini sauf gnuplot
 fi
@@ -421,11 +421,40 @@ trait_argument_d_country() {
             #cut antilles
         ;;
         5)
-            awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+            case $7 in
+
+                2)
+                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                ;;
+                3)
+                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                ;;
+                4)  
+                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                ;;
+                *)
+                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                ;;
+            esac 
+            
             #cut antarctique mais pas fini ask to ptrofesor
         ;;
-        6)
-            awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2 && fr[2] > -57 && fr[2] < -50) print $0;}' FS=";" $file > cut_c.csv
+        6) case $7 in
+
+                2)
+                    awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                ;;
+                3)
+                     awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                ;;
+                4)  
+                     awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                ;;
+                *)
+                    awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                ;;
+            esac 
+            
         
         ;;
         *)
