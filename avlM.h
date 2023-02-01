@@ -8,8 +8,12 @@
 typedef struct data_m{
     int station;
     int moisture;
-    int duplicate[61];
+    float duplicates[61];
+    float duplicatela[61];
+    float duplicatelo[61];
     int counter;
+    float latitude;
+    float longitude;
 }Data_m;
 
 typedef struct avl_m{
@@ -130,4 +134,5 @@ PAVL_m insertionAVLM(PAVL_m a,Data_m e, int* h);
 PAVL_m insertionAVLMMax(PAVL_m a,Data_m e, int* h);
 
 #endif
+
 
