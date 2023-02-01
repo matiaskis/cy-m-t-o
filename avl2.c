@@ -151,3 +151,7 @@ void calculateAverage2(PAVL2 a){
 
 
 
+
+
+
+
