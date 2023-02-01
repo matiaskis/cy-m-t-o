@@ -1,23 +1,24 @@
 
-
 #include "avlh.h"
 #include "avl1.h"
  
 
 void treat_h(Data_h e,FILE* out) {
     fprintf(out,"%d ",e.station);
-    fprintf(out,"%d\n",e.height);
-   // fprintf(out,"%f ",e.latitude);
-    //fprintf(out,"%f\n",e.longitude);
-    if(e.duplicate!=0){
-        fprintf(out,"%d ",e.duplicate);
-        fprintf(out,"%d\n",e.height);
-        //fprintf(out,"%f ",e.latitude);
-        //fprintf(out,"%f\n",e.longitude);
+    fprintf(out,"%d ",e.height);
+    fprintf(out,"%f ",e.latitude);
+    fprintf(out,"%f\n",e.longitude);
+    if(e.duplicate[0]!=0){
+        fprintf(out,"%d ",(int)e.duplicate[0]);
+        fprintf(out,"%d ",e.height);
+        fprintf(out,"%f ",e.duplicate[1]);
+        fprintf(out,"%f\n",e.duplicate[2]);
     }
-    if(e.duplicate2 !=0 ){
-        fprintf(out,"%d ",e.duplicate2);
-        fprintf(out,"%d\n",e.height);
+    if(e.duplicate2[0] !=0 ){
+        fprintf(out,"%d ",(int)e.duplicate2[0]);
+        fprintf(out,"%d ",e.height);
+        fprintf(out,"%f ",e.duplicate2[1]);
+        fprintf(out,"%f\n",e.duplicate2[2]);
     }
 }
 
@@ -50,7 +51,10 @@ PAVL_H createTree_h(Data_h e){
     if(tree==NULL){
         exit(1);
     }
-    tree->elmt=e;
+    tree->elmt.station=e.station;
+    tree->elmt.height=e.height;
+    tree->elmt.latitude=e.latitude;
+    tree->elmt.longitude=e.longitude;
     tree->fg= NULL;
     tree->fd= NULL;
     tree->balance= 0;
@@ -159,10 +163,15 @@ PAVL_H insertionAVLHeight(PAVL_H a,Data_h e, int* h){
     }
     else{
         if(e.station!=a->elmt.station){
-            if(e.station != a->elmt.duplicate && a->elmt.duplicate != 0 ){
-                a->elmt.duplicate2=e.station;
+            if(e.latitude != a->elmt.duplicate[1] && a->elmt.duplicate[0] != 0 ){
+                a->elmt.duplicate2[0]=e.station;
+                a->elmt.duplicate2[1]=e.latitude;
+                a->elmt.duplicate2[2]=e.longitude;
             }
-            else a->elmt.duplicate=e.station;
+            else{ a->elmt.duplicate[0]=e.station;
+                a->elmt.duplicate[1]=e.latitude;
+                a->elmt.duplicate[2]=e.longitude;
+            }
         }
         *h=0;
         return a;
