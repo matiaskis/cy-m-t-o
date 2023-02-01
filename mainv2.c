@@ -48,9 +48,9 @@ int main(int argc, char* argv[]){
             a1=insertionAVL1Max(a1,data1,&h);
         }
         if(display_option==1){
-        parcoursInfixe(a1,output_file);
+        infixPath(a1,output_file);
         }
-        else parcoursInfixeR(a1,output_file);
+        else infixPathR(a1,output_file);
     }
     else if(sort_option==2){
   
@@ -61,9 +61,9 @@ int main(int argc, char* argv[]){
             a1=insertionAVL1Min(a1,data1,&h);
         }
         if(display_option==1){
-        parcoursInfixe(a1,output_file);
+        infixPath(a1,output_file);
         }
-        else parcoursInfixeR(a1,output_file);
+        else infixPathR(a1,output_file);
         }
     else if(sort_option==3){
 
@@ -75,9 +75,9 @@ int main(int argc, char* argv[]){
         }
         calculateAverage(a1);
         if(display_option==1){
-        parcoursInfixe(a1,output_file);
+        infixPath(a1,output_file);
         }
-        else parcoursInfixeR(a1,output_file);
+        else infixPathR(a1,output_file);
     }
     else if(sort_option==4){
 
@@ -85,12 +85,12 @@ int main(int argc, char* argv[]){
             fscanf(data_file,"%d",&height);
             data_h.station=station;
             data_h.height=height;
-            ah=insertionAVLHHeight(ah,data_h,&h);
+            ah=insertionAVLHeight(ah,data_h,&h);
         }
         if(display_option==1){
-        parcoursInfixe_h(ah,output_file);
+        infixPath_h(ah,output_file);
         }
-        else parcoursInfixeR_h(ah,output_file);
+        else infixPathR_h(ah,output_file);
     }
     else if(sort_option==5){
 
@@ -102,9 +102,9 @@ int main(int argc, char* argv[]){
         }
 
         if(display_option==1){
-            parcoursInfixe2(a2,output_file);
+            infixPath2(a2,output_file);
         }
-        else parcoursInfixeR2(a2,output_file);
+        else infixPathR2(a2,output_file);
     }
     else if(sort_option==6){
          while (fscanf(data_file,"%d;",&station) == 1){
@@ -117,9 +117,9 @@ int main(int argc, char* argv[]){
         }
 
         if(display_option==1){
-            parcoursInfixe3(a3,output_file);
+            infixPath3(a3,output_file);
         }
-        else parcoursInfixeR3(a3,output_file);
+        else infixPathR3(a3,output_file);
     }
     else if(sort_option==7){
         sort_option2=atoi(argv[5]);
@@ -132,9 +132,9 @@ int main(int argc, char* argv[]){
                 am=insertionAVLMMax(am,data_m,&h);
             }
             if(display_option==1){
-                parcoursInfixe_m2(am,output_file);
+                infixPath_m2(am,output_file);
             }
-            else parcoursInfixeR_m2(am,output_file);
+            else infixPathR_m2(am,output_file);
         }
         else{
             while (fscanf(data_file,"%d;",&station) == 1){
@@ -145,9 +145,9 @@ int main(int argc, char* argv[]){
 
             }
             if(display_option==1){
-                parcoursInfixe_m(am,output_file);
+                infixPath_m(am,output_file);
             }
-            else parcoursInfixeR_m(am,output_file);
+            else infixPathR_m(am,output_file);
         }
 
         
@@ -163,12 +163,13 @@ int main(int argc, char* argv[]){
             aa=insertionAVLAAAverage(aa,dataA1,&h);
         }
         if(display_option==1){
-            parcoursInfixeA(aa,output_file);
+            infixPathA(aa,output_file);
         }
-        else parcoursInfixeRA(aa,output_file);
+        else infixPathRA(aa,output_file);
     }  
 
     fclose(data_file);
     fclose(output_file);
     return 0;
 }
+
