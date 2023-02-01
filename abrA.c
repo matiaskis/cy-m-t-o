@@ -1,5 +1,4 @@
-#include "avl1.h"
-#include "avlA.h"
+#include "abrA.h"
 
 void treat_abra(Data_abra e,FILE* out) {
     fprintf(out,"%d ",e.station);
@@ -38,18 +37,18 @@ PABRAA createTree_abra(Data_abra e){
     return tree;
 }
 
-PABRAA insertionAverage_abra(PABRAA a,Data_abra e, int* h){
+PABRAA insertionAverage_abra(PABRAA a,Data_abra e){
 
     if (a== NULL){
      
         return createTree_abra(e);
     }
     else if (e.station < a->elmt.station){
-        a->fg=insertionAverage_abra(a->fg, e, h);
+        a->fg=insertionAverage_abra(a->fg, e);
    
     }
     else if(e.station > a->elmt.station){
-        a->fd=insertionAverage_abra(a->fd, e, h);
+        a->fd=insertionAverage_abra(a->fd, e);
         
     }
     else{
@@ -63,11 +62,12 @@ PABRAA insertionAverage_abra(PABRAA a,Data_abra e, int* h){
     return a;
     }
  
-void calculateAverageA(PABRAA a){
+void calculateAverage_abra(PABRAA a){
     if (a!=NULL) {
-        calculateAverageA(a->fg);
+        calculateAverage_abra(a->fg);
         a->elmt.associated_DataA1=a->elmt.associated_DataA1/a->elmt.average_increment;
         a->elmt.associated_DataA2=a->elmt.associated_DataA2/a->elmt.average_increment;
-        calculateAverageA(a->fd);
+        calculateAverage_abra(a->fd);
     }
 }
+
