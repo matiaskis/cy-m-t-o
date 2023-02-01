@@ -101,3 +101,4 @@ PAVL2 insertionAVLAverage2(PAVL2 a,Data2 e, int* h);
      */
 void calculateAverage2(PAVL2 a);
 #endif
+
