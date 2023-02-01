@@ -106,6 +106,7 @@ PAVLAA insertionAVLAAAverage(PAVLAA a,DataA1 e, int* h){
     if (a== NULL){
         *h=1;
         return createTreeA(e);
+        printf("polo ");
     }
     else if (e.station < a->elmt.station){
     a->fg=insertionAVLAAAverage(a->fg, e, h);
