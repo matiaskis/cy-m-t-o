@@ -41,12 +41,12 @@ field_coo=$(awk '{for(i=1;i<=NF;i++)if($i == "COORDONNEES")print i;}' FS=";" che
     rm station_height0.csv
     trait_argument_d_country $2 $3 $4 $5 station_height.csv $field_date $field_coo       
 
-    cut -d';' -f$field_station,$field_height cut_c.csv > station_height2.csv  
+    cut -d';' -f$field_station,$field_height,$field_coo cut_c.csv > station_height2.csv  
     
     
-    #rm cut_c.csv
+    rm cut_c.csv
     ./exec station_height2.csv gnuplot_height.csv 4 2
-    #rm station_height2.csv
+    rm station_height2.csv
    
     #fini sauf gnuplot
 fi
@@ -69,7 +69,7 @@ if [ $7 -eq 1 ]; then
     rm station_m0.csv
     trait_argument_d_country $2 $3 $4 $5 station_m.csv $field_date $field_coo
     
-    cut -d';' -f$field_station,$field_moisture cut_c.csv > station_m2.csv 
+    cut -d';' -f$field_station,$field_moisture,$field_coo cut_c.csv > station_m2.csv 
     
     rm cut_c.csv
     ./exec station_m2.csv station_m.csv 7 2 1
@@ -102,7 +102,7 @@ if [ $8 -eq 1 ]; then
     rm station_wind0.csv
     trait_argument_d_country $2 $3 $4 $5 station_wind.csv $field_date $field_coo
 
-    cut -d';' -f$field_station,$field_wind1,$field_wind2 cut_c.csv > station_wind2.csv 
+    cut -d';' -f$field_station,$field_wind1,$field_wind2,$field_coo cut_c.csv > station_wind2.csv 
     
     rm cut_c.csv
     ./exec station_wind2.csv gnuplot_wind.csv 8 1 
@@ -424,16 +424,16 @@ trait_argument_d_country() {
             case $7 in
 
                 2)
-                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                    awk '{split($2,fr,","); split(fr[2],ft,"-"); if(ft[2] > 60) print $0;}' FS=";" $file > cut_c.csv
                 ;;
                 3)
-                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                    awk '{split($3,fr,","); split(fr[2],ft,"-"); if(ft[2] > 60) print $0;}' FS=";" $file > cut_c.csv
                 ;;
                 4)  
-                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                    awk '{split($4,fr,","); split(fr[2],ft,"-"); if(ft[2] > 60) print $0;}' FS=";" $file > cut_c.csv
                 ;;
                 *)
-                    awk '{split($10,fr,","); if(fr[1] < -60) print $0;}' FS=";" $file > cut_c.csv
+                    awk '{split($5,fr,","); split(fr[2],ft,"-"); if(ft[2] > 60) print $0;}' FS=";" $file > cut_c.csv
                 ;;
             esac 
             
@@ -442,16 +442,16 @@ trait_argument_d_country() {
         6) case $7 in
 
                 2)
-                    awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                    awk '{split($2,fr,",");if(fr[2] > 35 && fr[2] < 110){ split(fr[1],ft,"-"); if(ft[2] > 0 && ft[2] < 60)  print $0;}}' FS=";" $file > cut_c.csv
                 ;;
                 3)
-                     awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                     awk '{split($3,fr,",");if(fr[2] > 35 && fr[2] < 110){ split(fr[1],ft,"-"); if(ft[2] > 0 && ft[2] < 60)  print $0;}}' FS=";" $file > cut_c.csv
                 ;;
                 4)  
-                     awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                     awk '{split($4,fr,",");if(fr[2] > 35 && fr[2] < 110){ split(fr[1],ft,"-"); if(ft[2] > 0 && ft[2] < 60)  print $0;}}' FS=";" $file > cut_c.csv
                 ;;
                 *)
-                    awk '{split($10,fr,","); if(fr[1] < 6 && fr[1] > 2){ split(fr[2],ft,"-");  if(fr[2] < 57 && fr[2] > 50) print $0;}}' FS=";" $file > cut_c.csv
+                    awk '{split($5,fr,",");if(fr[2] > 35 && fr[2] < 110){ split(fr[1],ft,"-"); if(ft[2] > 0 && ft[2] < 60)  print $0;}}' FS=";" $file > cut_c.csv
                 ;;
             esac 
             
@@ -711,4 +711,5 @@ check_argument(){
 
 make -f Makefile.mak
 check_argument $@
+
 
