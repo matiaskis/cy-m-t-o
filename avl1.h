@@ -135,3 +135,4 @@ PAVL1 insertionAVL1Average(PAVL1 a,Data1 e, int* h);
      */
 void calculateAverage(PAVL1 a);
 #endif
+
