@@ -56,7 +56,7 @@ PABRAA createTree_abra(Data_abra e);
      * @param  e                    element to insert
      * @return                      pointer relative to the tree
      */
-PABRAA insertionAverage_abra(PABRAA a,Data_abra e, int* h);
+PABRAA insertionAverage_abra(PABRAA a,Data_abra e);
 
 /*!
      * @brief                       this function is used to calculate the average of the associated data in each element of the tree                                         
@@ -65,3 +65,4 @@ PABRAA insertionAverage_abra(PABRAA a,Data_abra e, int* h);
      */
 void calculateAverage_abra(PABRAA a);
 #endif
+
