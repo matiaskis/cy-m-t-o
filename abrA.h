@@ -9,6 +9,8 @@ typedef struct data_abra{
     float associated_DataA1;
     float associated_DataA2;
     int average_increment;
+    float latitude;
+    float longitude;
 }Data_abra;
 
 typedef struct ABRAA{
@@ -65,4 +67,5 @@ PABRAA insertionAverage_abra(PABRAA a,Data_abra e);
      */
 void calculateAverage_abra(PABRAA a);
 #endif
+
 
