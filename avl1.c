@@ -32,7 +32,7 @@ int min(int a, int b) {
 }
 
 PAVL1 createTree(Data1 e){
-    PAVL1 tree ;
+    PAVL1 tree=NULL ;
     tree=malloc(sizeof(AVL1));
     if(tree==NULL){
         exit(1);
@@ -46,7 +46,7 @@ PAVL1 createTree(Data1 e){
 }
 
 PAVL1 leftRotation(PAVL1 a){
-    PAVL1 pivot; 
+    PAVL1 pivot=NULL; 
     float eq_a, eq_p;
 
     pivot = a->fd;
@@ -61,7 +61,7 @@ PAVL1 leftRotation(PAVL1 a){
     }
 
     PAVL1 rightRotation(PAVL1 a){
-    PAVL1 pivot ;
+    PAVL1 pivot=NULL ;
     float eq_a, eq_p;
 
     pivot = a->fg;
