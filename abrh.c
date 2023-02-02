@@ -61,7 +61,7 @@ PABR_H createTree_abrh(Data_abrh e){
   
     tree->fg= NULL;
     tree->fd= NULL;
-    tree->balance= 0;
+    
     return tree;
 }
 
