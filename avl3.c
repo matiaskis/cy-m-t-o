@@ -51,7 +51,7 @@ if (a!=NULL) {
 
 
 PAVL3 createTree3(Data3 e){
-    PAVL3 tree ;
+    PAVL3 tree=NULL ;
     tree=malloc(sizeof(AVL3));
     if(tree==NULL){
         exit(1);
@@ -64,7 +64,7 @@ PAVL3 createTree3(Data3 e){
 }
 
 PAVL3 createTreeAVL3(Data3 e){
-    PAVL3 tree ;
+    PAVL3 tree=NULL ;
     tree=malloc(sizeof(AVL3));
     if(tree==NULL){
         exit(1);
@@ -78,7 +78,7 @@ PAVL3 createTreeAVL3(Data3 e){
 }
 
 PAVL3 LeftRotation3(PAVL3 a){
-    PAVL3 pivot; 
+    PAVL3 pivot=NULL; 
     float eq_a, eq_p;
 
     pivot = a->fd;
@@ -93,7 +93,7 @@ PAVL3 LeftRotation3(PAVL3 a){
     }
 
     PAVL3 RightRotation3(PAVL3 a){
-    PAVL3 pivot ;
+    PAVL3 pivot=NULL ;
     float eq_a, eq_p;
 
     pivot = a->fg;
