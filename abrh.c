@@ -43,7 +43,7 @@ if (a!=NULL) {
 
 
 PABR_H createTree_abrh(Data_abrh e){
-    PABR_H tree ;
+    PABR_H tree=NULL ;
     tree=malloc(sizeof(ABR_H));
     if(tree==NULL){
         exit(1);
