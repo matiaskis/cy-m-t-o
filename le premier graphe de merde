@@ -1,8 +1,0 @@
-set title "premier graphe"
-set xlabel "cool"
-set ylabel "pop"
-set x2range [7000:8000] [60000:80000]
-set size 1,1
-set terminal png
-set output "test.png"
-plot "gnuplot_height.csv"
