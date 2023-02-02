@@ -2,7 +2,7 @@
 
  
 
-vvoid treat_h(Data_abrh e,FILE* out) {
+void treat_abrh(Data_abrh e,FILE* out) {
     fprintf(out,"%d ",e.station);
     fprintf(out,"%d ",e.height);
     fprintf(out,"%f ",e.latitude);
