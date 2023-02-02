@@ -96,7 +96,7 @@ PABR_m insertionABRMMax(PABR_m a,Data_abrm e){
     }
     else{
         if(e.moisture > a->elmt.moisture){
-            a->elmt=e;
+            a->elmt.moisture=e.moisture;
         }
         return a;
     }
