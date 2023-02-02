@@ -31,7 +31,7 @@ if (a!=NULL) {
 
 
 PABR2 createTree_abr2(Data_abr2 e){
-    PABR2 tree ;
+    PABR2 tree=NULL ;
     tree=malloc(sizeof(ABR2));
     if(tree==NULL){
         exit(1);
