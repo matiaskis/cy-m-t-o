@@ -50,7 +50,7 @@ if (a!=NULL) {
 
 
 PABR3 createTree_abr3(Data_abr3 e){
-    PABR3 tree ;
+    PABR3 tree=NULL ;
     tree=malloc(sizeof(ABR3));
     if(tree==NULL){
         exit(1);
@@ -62,7 +62,7 @@ PABR3 createTree_abr3(Data_abr3 e){
 }
 
 PABR3 createTree_oabr3(Data_abr3 e){
-    PABR3 tree ;
+    PABR3 tree=NULL ;
     tree=malloc(sizeof(ABR3));
     if(tree==NULL){
         exit(1);
