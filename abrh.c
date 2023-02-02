@@ -46,13 +46,22 @@ if (a!=NULL) {
 
 PABR_H createTree_abrh(Data_abrh e){
     PABR_H tree=NULL ;
-    tree=malloc(sizeof(ABR_H));
+    tree=(ABRH *)malloc(sizeof(ABRH));
     if(tree==NULL){
         exit(1);
     }
     tree->elmt=e;
+    tree->elmt.duplicate[0]=0;
+    tree->elmt.duplicate[1]=0;
+    tree->elmt.duplicate[2]=0;
+    tree->elmt.duplicate2[0]=0;
+    tree->elmt.duplicate2[1]=0;
+    tree->elmt.duplicate2[2]=0;
+
+  
     tree->fg= NULL;
     tree->fd= NULL;
+    tree->balance= 0;
     return tree;
 }
 
