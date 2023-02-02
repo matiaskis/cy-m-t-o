@@ -67,15 +67,13 @@ if (a!=NULL) {
 
 
 PAVL_m createTree_m(Data_m e){
-    PAVL_m tree ;
+    PAVL_m tree=NULL ;
     tree=malloc(sizeof(AVL_m));
     if(tree==NULL){
         exit(1);
     }
-    tree->elmt.station=e.station;
-    tree->elmt.moisture=e.moisture;
-    tree->elmt.latitude=e.latitude;
-    tree->elmt.longitude=e.longitude;
+    tree->elmt=e;
+    tree->elmt.counter=0;
     tree->fg= NULL;
     tree->fd= NULL;
     tree->balance= 0;
@@ -87,7 +85,7 @@ PAVL_m LeftRotation_m(PAVL_m a){
 
  
 
-    PAVL_m pivot; 
+    PAVL_m pivot=NULL; 
     float eq_a, eq_p;
 
  
@@ -109,7 +107,7 @@ PAVL_m LeftRotation_m(PAVL_m a){
 
  
 
-    PAVL_m pivot ;
+    PAVL_m pivot=NULL ;
     float eq_a, eq_p;
 
  
