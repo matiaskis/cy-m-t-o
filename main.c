@@ -18,21 +18,22 @@ int main(int argc, char* argv[]){
     int g;//avl3
     float latitude, longitude;
 
-    PAVL1 a1;
-    PAVL_H ah;
+    PAVL1 a1=NULL;
+    PAVL_H ah=NULL;
     Data1 data1;
     Data2 data2;
     Data3 data3;
-    PAVL2 a2;
-    PAVL3 a3;
+    PAVL2 a2=NULL;
+    PAVL3 a3=NULL;
     Data_h data_h;
-    PAVL_m am;
+    PAVL_m am=NULL;
     Data_m data_m;
-    PAVLAA aa;
+    PAVLAA aa=NULL;
     DataA1 dataA1;
     
 
     int sort_option=atoi(argv[3]);
+    int sort_technique=atoi(argv[5]);
     int sort_option2;
 
     int display_option=atoi(argv[4]);
@@ -127,7 +128,7 @@ int main(int argc, char* argv[]){
         else infixPathR3(a3,output_file);
     }
     else if(sort_option==7){
-        sort_option2=atoi(argv[5]);
+        sort_option2=atoi(argv[6]);
 
         if(sort_option2 == 1){
             while (fscanf(data_file,"%d;",&station) == 1){
