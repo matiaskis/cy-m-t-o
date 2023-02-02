@@ -1,6 +1,8 @@
 # projet CY-météo
 This program is used to create graphics based on a weather data file. It uses for that a shell script and a c programm. The shell script manage all different options
-possible : -t1 max,min adn average temperature per station
+possible : 
+
+           -t1 max,min adn average temperature per station
            -p1 max,min adn average pressure per station
            -t2 average temperature per date on every station 
            -p2 average pressure per date on every station 
