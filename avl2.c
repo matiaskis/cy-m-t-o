@@ -32,7 +32,7 @@ if (a!=NULL) {
 
 
 PAVL2 createTree2(Data2 e){
-    PAVL2 tree ;
+    PAVL2 tree=NULL ;
     tree=malloc(sizeof(AVL2));
     if(tree==NULL){
         exit(1);
@@ -46,7 +46,7 @@ PAVL2 createTree2(Data2 e){
 }
 
 PAVL2 LeftRotation2(PAVL2 a){
-    PAVL2 pivot; 
+    PAVL2 pivot=NULL; 
     float eq_a, eq_p;
 
     pivot = a->fd;
@@ -61,7 +61,7 @@ PAVL2 LeftRotation2(PAVL2 a){
     }
 
     PAVL2 RightRotation2(PAVL2 a){
-    PAVL2 pivot ;
+    PAVL2 pivot=NULL ;
     float eq_a, eq_p;
 
     pivot = a->fg;
