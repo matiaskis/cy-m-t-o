@@ -28,7 +28,7 @@ if (a!=NULL) {
 }
 
 PAVLAA createTreeA(DataA1 e){
-    PAVLAA tree ;
+    PAVLAA tree=NULL ;
     tree=malloc(sizeof(AVLAA));
     if(tree==NULL){
         exit(1);
@@ -42,7 +42,7 @@ PAVLAA createTreeA(DataA1 e){
 }
 
 PAVLAA LeftRotationA(PAVLAA a){
-    PAVLAA pivot; 
+    PAVLAA pivot=NULL; 
     float eq_a, eq_p;
 
     pivot = a->fd;
@@ -57,7 +57,7 @@ PAVLAA LeftRotationA(PAVLAA a){
     }
 
     PAVLAA RightRotationA(PAVLAA a){
-    PAVLAA pivot ;
+    PAVLAA pivot=NULL ;
     float eq_a, eq_p;
 
     pivot = a->fg;
