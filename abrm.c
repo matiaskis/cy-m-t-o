@@ -118,7 +118,9 @@ PABR_m insertionABRM(PABR_m a,Data_abrm e){
         
     }
     else{
-        a->elmt.duplicate[a->elmt.counter]=e.station;
+        a->elmt.duplicates[a->elmt.counter]=e.station;
+        a->elmt.duplicatela[a->elmt.counter]=e.latitude;
+        a->elmt.duplicatelo[a->elmt.counter]=e.longitude;
         a->elmt.counter=a->elmt.counter+1;
                   
         return a;
