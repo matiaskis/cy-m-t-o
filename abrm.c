@@ -67,6 +67,7 @@ PABR_m createTree_abrm(Data_abrm e){
         exit(1);
     }
     tree->elmt=e;
+    tree->elmt.counter=0;
     tree->fg= NULL;
     tree->fd= NULL;
     return tree;
