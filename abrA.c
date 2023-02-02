@@ -27,7 +27,7 @@ if (a!=NULL) {
 }
 
 PABRAA createTree_abra(Data_abra e){
-    PABRAA tree ;
+    PABRAA tree=NULL ;
     tree=malloc(sizeof(ABRAA));
     if(tree==NULL){
         exit(1);
