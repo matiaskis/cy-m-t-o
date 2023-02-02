@@ -10,8 +10,8 @@ typedef struct data_abrh{
     int height;
     float latitude;
     float longitude;
-    int duplicate;
-    int duplicate2;
+    float duplicate[3];
+    float duplicate2[3];
 }Data_abrh;
 
 typedef struct abr_h{
