@@ -8,8 +8,12 @@
 typedef struct data_abrm{
     int station;
     int moisture;
-    int duplicate[61];
+    float duplicates[61];
+    float duplicatela[61];
+    float duplicatelo[61];
     int counter;
+    float latitude;
+    float longitude;
 }Data_abrm;
 
 typedef struct abr_m{
