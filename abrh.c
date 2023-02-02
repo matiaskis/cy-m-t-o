@@ -83,11 +83,16 @@ PABR_H insertionABRHeight(PABR_H a,Data_abrh e){
         
     }
     else{
-        if(e.station!=a->elmt.station){
-            if(e.station != a->elmt.duplicate && a->elmt.duplicate != 0 ){
-                a->elmt.duplicate2=e.station;
+         if(e.station!=a->elmt.station){
+            if(e.station != a->elmt.duplicate[0] && a->elmt.duplicate[0] != 0 ){
+                a->elmt.duplicate2[0]=e.station;
+                a->elmt.duplicate2[1]=e.latitude;
+                a->elmt.duplicate2[2]=e.longitude;
             }
-            else a->elmt.duplicate=e.station;
+            else{ a->elmt.duplicate[0]=e.station;
+                a->elmt.duplicate[1]=e.latitude;
+                a->elmt.duplicate[2]=e.longitude;
+            }
         }
       
         return a;
