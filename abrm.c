@@ -2,16 +2,19 @@
 
 
 
+
 void treat_abrm(int count,Data_abrm e,FILE* out) {
     fprintf(out,"%d ",e.station);
+    fprintf(out,"%f ",e.latitude);
+    fprintf(out,"%f ",e.longitude);
     fprintf(out,"%d\n",e.moisture);
    
     for(int i=0; i < count; i++ ){
-        fprintf(out,"%d ",e.duplicate[i]);
+        fprintf(out,"%d ",(int)e.duplicates[i]);
+        fprintf(out,"%f ",e.duplicatela[i]);
+        fprintf(out,"%f ",e.duplicatelo[i]);
         fprintf(out,"%d\n",e.moisture);
-        
-    }
-      
+    }     
     
   
 }
