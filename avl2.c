@@ -24,6 +24,7 @@ void infixPathR2(PAVL2 a, FILE* out) {
 if (a!=NULL) {
     infixPathR2(a->fd,out); 
     treat2(a->elmt,out);
+    free(a);
     infixPathR2(a->fg,out);
 }
 }
