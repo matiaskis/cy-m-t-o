@@ -19,8 +19,10 @@ void treat_abrm(int count,Data_abrm e,FILE* out) {
   
 }
 void treat_abrm2(Data_abrm e,FILE* out) {
-    fprintf(out,"%d ",e.station);
-    fprintf(out,"%d\n",e.moisture);
+     fprintf(out,"%d;",e.station);
+    fprintf(out,"%d;",e.moisture);
+    fprintf(out,"%f,",e.latitude);
+    fprintf(out,"%f\n",e.longitude);
 }
  
 
