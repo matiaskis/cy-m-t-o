@@ -36,7 +36,7 @@ typedef ABR_H* PABR_H;
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-    void infixPath_h(PABR_H a, FILE* out);
+    void infixPath_abrh(PABR_H a, FILE* out);
     
     /*!
      * @brief                       this function is used to browse into  the tree but in reverse                                           
@@ -44,7 +44,7 @@ typedef ABR_H* PABR_H;
      * @param  out                  pointer relative to ouput file
      * @return                      nothing
      */
-    void infixPathR_h(PABR_H a, FILE* out);
+    void infixPathR_abrh(PABR_H a, FILE* out);
     
     /*!
      * @brief                       this function is used to create a new tree                                         
