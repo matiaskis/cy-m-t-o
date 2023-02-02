@@ -46,15 +46,20 @@ if (a!=NULL) {
 
 
 PAVL_H createTree_h(Data_h e){
-    PAVL_H tree ;
-    tree=malloc(sizeof(AVL_H));
+    PAVL_H tree=NULL ;
+    tree=(AVL_H *)malloc(sizeof(AVL_H));
     if(tree==NULL){
         exit(1);
     }
-    tree->elmt.station=e.station;
-    tree->elmt.height=e.height;
-    tree->elmt.latitude=e.latitude;
-    tree->elmt.longitude=e.longitude;
+    tree->elmt=e;
+    tree->elmt.duplicate[0]=0;
+    tree->elmt.duplicate[1]=0;
+    tree->elmt.duplicate[2]=0;
+    tree->elmt.duplicate2[0]=0;
+    tree->elmt.duplicate2[1]=0;
+    tree->elmt.duplicate2[2]=0;
+
+  
     tree->fg= NULL;
     tree->fd= NULL;
     tree->balance= 0;
@@ -66,7 +71,7 @@ PAVL_H LeftRotation_h(PAVL_H a){
 
  
 
-    PAVL_H pivot; 
+    PAVL_H pivot=NULL; 
     float eq_a, eq_p;
 
  
@@ -88,7 +93,7 @@ PAVL_H LeftRotation_h(PAVL_H a){
 
  
 
-    PAVL_H pivot ;
+    PAVL_H pivot=NULL ;
     float eq_a, eq_p;
 
  
@@ -163,7 +168,7 @@ PAVL_H insertionAVLHeight(PAVL_H a,Data_h e, int* h){
     }
     else{
         if(e.station!=a->elmt.station){
-            if(e.latitude != a->elmt.duplicate[1] && a->elmt.duplicate[0] != 0 ){
+            if(e.station != a->elmt.duplicate[0] && a->elmt.duplicate[0] != 0 ){
                 a->elmt.duplicate2[0]=e.station;
                 a->elmt.duplicate2[1]=e.latitude;
                 a->elmt.duplicate2[2]=e.longitude;
