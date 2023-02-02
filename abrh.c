@@ -2,20 +2,22 @@
 
  
 
-void treat_abrh(Data_abrh e,FILE* out) {
+vvoid treat_h(Data_abrh e,FILE* out) {
     fprintf(out,"%d ",e.station);
-    fprintf(out,"%d\n",e.height);
-   // fprintf(out,"%f ",e.latitude);
-    //fprintf(out,"%f\n",e.longitude);
-    if(e.duplicate!=0){
-        fprintf(out,"%d ",e.duplicate);
-        fprintf(out,"%d\n",e.height);
-        //fprintf(out,"%f ",e.latitude);
-        //fprintf(out,"%f\n",e.longitude);
+    fprintf(out,"%d ",e.height);
+    fprintf(out,"%f ",e.latitude);
+    fprintf(out,"%f\n",e.longitude);
+    if(e.duplicate[0]!=0){
+        fprintf(out,"%d ",(int)e.duplicate[0]);
+        fprintf(out,"%d ",e.height);
+        fprintf(out,"%f ",e.duplicate[1]);
+        fprintf(out,"%f\n",e.duplicate[2]);
     }
-    if(e.duplicate2 !=0 ){
-        fprintf(out,"%d ",e.duplicate2);
-        fprintf(out,"%d\n",e.height);
+    if(e.duplicate2[0] !=0 ){
+        fprintf(out,"%d ",(int)e.duplicate2[0]);
+        fprintf(out,"%d ",e.height);
+        fprintf(out,"%f ",e.duplicate2[1]);
+        fprintf(out,"%f\n",e.duplicate2[2]);
     }
 }
 
