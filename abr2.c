@@ -7,7 +7,7 @@ void treat_abr2(Data_abr2 e,FILE* out) {
     d=((e.date%10000)-e.date%100)/100;
     m=((e.date%1000000)-e.date%10000)/10000;
     y=((e.date)-e.date%1000000)/1000000;
-    fprintf(out,"%ld/%ld/%ld %ld:00:00 ",d,m,y,h);
+    fprintf(out,"%ld/%ld/%ld-%ld:00:00 ",d,m,y,h);
     fprintf(out,"%f\n",e.associated_data);
 }
 
