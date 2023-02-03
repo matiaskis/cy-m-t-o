@@ -7,7 +7,7 @@ void treat3(Data3 e,FILE* out){
     d=((e.date3%10000)-e.date3%100)/100;
     m=((e.date3%1000000)-e.date3%10000)/10000;
     y=((e.date3)-e.date3%1000000)/1000000;
-    fprintf(out,"%ld/%ld/%ld %ld:00:00 ",d,m,y,h);
+    fprintf(out,"%ld/%ld/%ld-%ld:00:00 ",d,m,y,h);
     fprintf(out,"%d ",e.station);
     fprintf(out,"%f\n",e.associated_Data3);    
 }
