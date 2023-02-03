@@ -10,6 +10,7 @@ typedef struct data_tab1{
     float temp_ave;
     float temp_max;
     float temp_min;
+    int ave_counter;
 }Data_tab1;
 
 typedef struct linkedList {
