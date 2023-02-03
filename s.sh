@@ -49,7 +49,7 @@ trait_argument_abr() {
         rm station_height2.csv #remove the file
 
         gnuplot "height.gnu"
-        xdg-open "height.png"
+        xdg-open "height.png" &2>/dev/null #avoid the warning
         rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
@@ -87,7 +87,9 @@ trait_argument_abr() {
         fi
         rm station_m.csv
 
-        #manque gnuplot
+        gnuplot "moisture.gnu"
+        xdg-open "moisture.png" &2>/dev/null
+        rm gnuplot_m.csv
 
     fi
      #---------------------------------------------------------------wind------------------------------------------------------------------
@@ -369,7 +371,7 @@ trait_argument_avl() {
         rm station_height2.csv #remove the file
 
          gnuplot "height.gnu"
-        xdg-open "height.png"
+        xdg-open "height.png" &2>/dev/null #avoid the warning
         rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
@@ -407,7 +409,9 @@ trait_argument_avl() {
         fi
         rm station_m.csv
 
-        #manque gnuplot
+       gnuplot "moisture.gnu"
+        xdg-open "moisture.png" &2>/dev/null
+        rm gnuplot_m.csv
 
     fi
      #---------------------------------------------------------------wind------------------------------------------------------------------
