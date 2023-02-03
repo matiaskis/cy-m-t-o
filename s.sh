@@ -236,7 +236,9 @@ trait_argument_abr() {
             ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 1 2
         fi
         rm pres_date3.csv
-        #gnuplot
+        gnuplot "p3.gnu"
+        xdg-open "p3.png" &2>/dev/null
+        rm gnuplot_station_pres_date.csv
     fi
     #---------------------------------------------------------------temperature mode 1------------------------------------------------------------------
     if [ ${@: -1} -eq 1 ]; then
@@ -343,7 +345,9 @@ trait_argument_abr() {
             ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 1 2
         fi
         rm temp_date3.csv
-        #gnuplot
+           gnuplot "t3.gnu"
+        xdg-open "t3.png" &2>/dev/null
+        rm gnuplot_station_temp_date.csv
 
     fi
 
@@ -568,7 +572,10 @@ trait_argument_avl() {
             ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 1 1
         fi
         rm pres_date3.csv
-        #gnuplot
+        
+           gnuplot "p3.gnu"
+        xdg-open "p3.png" &2>/dev/null
+        rm gnuplot_station_pres_date.csv
     fi
     #---------------------------------------------------------------temperature mode 1------------------------------------------------------------------
     if [ ${@: -1} -eq 1 ]; then
@@ -675,7 +682,9 @@ trait_argument_avl() {
             ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 1 1
         fi
         rm temp_date3.csv
-        #gnuplot
+           gnuplot "t3.gnu"
+        xdg-open "t3.png" &2>/dev/null
+        rm gnuplot_station_temp_date.csv
 
     fi
 
