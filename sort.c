@@ -14,9 +14,7 @@
 #include "abrm.h"
 #include "abrA.h"
 #include "sort.h"
-void sort_tab(int sort_option,int display_option,int sort_option2,FILE* data_file,FILE* output_file){
-    printf("pouloulou");
-}
+
 void sort_abr(int sort_option,int display_option,int sort_option2,FILE* data_file,FILE* output_file){
 
     int station; 
