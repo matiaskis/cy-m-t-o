@@ -15,4 +15,4 @@ set view map scale 1
 set pm3d implicit at b
 set dgrid3d 50,50
 set pm3d map interpolate 5,5 flush begin nohidden3d
-splot "gnuplot_m.csv" using 2:1:3 with pm3d notitle
+splot "gnuplot_m.csv" using 3:2:4 with pm3d notitle
