@@ -1072,7 +1072,12 @@ check_argument() {
     fi
 
     if [ $sort -eq 3 ]; then
-        trait_argument_tab $file $d $allchoice $r $x $h $m $w $p $t
+        if [ $r -eq 1 ]; then
+            echo "you can't reverse with tab"
+            exit 2
+        else
+            trait_argument_tab $file $d $allchoice $r $x $h $m $w $p $t
+        fi
     elif [ $sort -eq 2 ]; then
         trait_argument_abr $file $d $allchoice $r $x $h $m $w $p $t
     else
