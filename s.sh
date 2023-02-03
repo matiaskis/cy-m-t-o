@@ -269,9 +269,11 @@ trait_argument_abr() {
 
         rm station_temp_ave2.csv
 
-        #gnuplot pression_moyenne.sh
-
-        #fini sauf gnuplot
+         gnuplot "t1.gnu"
+        xdg-open "t1.png" &2>/dev/null
+        rm gnuplot_temp_ave.csv
+        rm gnuplot_temp_min.csv
+        rm gnuplot_temp_max.csv
 
     #---------------------------------------------------------------temperature mode 2------------------------------------------------------------------
     elif [ ${@: -1} -eq 2 ]; then
@@ -595,9 +597,11 @@ trait_argument_avl() {
 
         rm station_temp_ave2.csv
 
-        #gnuplot pression_moyenne.sh
-
-        #fini sauf gnuplot
+       gnuplot "t1.gnu"
+        xdg-open "t1.png" &2>/dev/null
+        rm gnuplot_temp_ave.csv
+        rm gnuplot_temp_min.csv
+        rm gnuplot_temp_max.csv
 
     #---------------------------------------------------------------temperature mode 2------------------------------------------------------------------
     elif [ ${@: -1} -eq 2 ]; then
