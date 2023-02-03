@@ -708,10 +708,10 @@ trait_argument_d_country() {
             ;;
 
         4)
-            awk '{split($5,fr,","); if(fr[1] + 0 <= 52 && fr[1] + 0 >= 40 && fr[2] + 0 >= -5 && fr[2]  + 0 <= 10) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($4,fr,","); if(fr[1] + 0 <= 52 && fr[1] + 0 >= 40 && fr[2] + 0 >= -5 && fr[2]  + 0 <= 10) print $0;}' FS=";" $file >cut_c.csv
             ;;
         *)
-            awk '{split,fr,","); if(fr[1] + 0 <= 52 && fr[1] + 0 >= 40 && fr[2] + 0 >= -5 && fr[2]  + 0 <= 10) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($5,fr,","); if(fr[1] + 0 <= 52 && fr[1] + 0 >= 40 && fr[2] + 0 >= -5 && fr[2]  + 0 <= 10) print $0;}' FS=";" $file >cut_c.csv
             ;;
         esac
         #cut according to france
@@ -726,10 +726,10 @@ trait_argument_d_country() {
             awk '{split($3,fr,","); if(fr[1] + 0 < 6 && fr[1] + 0 > 2 && fr[2] + 0 >= -55 && fr[2] + 0 <= -50) print $0;}' FS=";" $file > cut_c.csv
             ;;
         4)
-            awk '{split($5,fr,","); if(fr[1] + 0 < 6 && fr[1] + 0 > 2 && fr[2] + 0 >= -55 && fr[2] + 0 <= -50) print $0;}' FS=";" $file > cut_c.csv
+            awk '{split($4,fr,","); if(fr[1] + 0 < 6 && fr[1] + 0 > 2 && fr[2] + 0 >= -55 && fr[2] + 0 <= -50) print $0;}' FS=";" $file > cut_c.csv
             ;;
         *)
-            awk '{split,fr,","); if(fr[1] + 0 < 6 && fr[1] + 0 > 2 && fr[2] + 0 >= -55 && fr[2] + 0 <= -50) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($5,fr,","); if(fr[1] + 0 < 6 && fr[1] + 0 > 2 && fr[2] + 0 >= -55 && fr[2] + 0 <= -50) print $0;}' FS=";" $file >cut_c.csv
             ;;
         esac
 
@@ -745,10 +745,10 @@ trait_argument_d_country() {
             awk '{split($3,fr,","); if(fr[1] + 0 <= 47.2 && fr[1] + 0 >= 46.5 && ft[2] + 0 >= -58 && ft[2] + 0 <= -55) print $0;}' FS=";" $file >cut_c.csv
             ;;
         4)
-            awk '{split($5,fr,","); if(fr[1] + 0 <= 47.2 && fr[1] + 0 >= 46.5 && ft[2] + 0 >= -58 && ft[2] + 0 <= -55) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($4,fr,","); if(fr[1] + 0 <= 47.2 && fr[1] + 0 >= 46.5 && ft[2] + 0 >= -58 && ft[2] + 0 <= -55) print $0;}' FS=";" $file >cut_c.csv
             ;;
         *)
-            awk '{split,fr,","); if(fr[1] + 0 <= 47.2 && fr[1] + 0 >= 46.5 && ft[2] + 0 >= -58 && ft[2] + 0 <= -55) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($5,fr,","); if(fr[1] + 0 <= 47.2 && fr[1] + 0 >= 46.5 && ft[2] + 0 >= -58 && ft[2] + 0 <= -55) print $0;}' FS=";" $file >cut_c.csv
             ;;
         esac
 
@@ -764,10 +764,10 @@ trait_argument_d_country() {
             awk '{split($3,fr,","); if(fr[1] + 0 <= 19 && fr[1] + 0 >= 11 && fr[2] + 0 >= -66 && fr[2] + 0 <= -58) print $0;}' FS=";" $file >cut_c.csv
             ;;
         4)
-            awk '{split($5,fr,","); if(fr[1] + 0 <= 19 && fr[1] + 0 >= 11 && fr[2] + 0 >= -66 && fr[2] + 0 <= -58) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($4,fr,","); if(fr[1] + 0 <= 19 && fr[1] + 0 >= 11 && fr[2] + 0 >= -66 && fr[2] + 0 <= -58) print $0;}' FS=";" $file >cut_c.csv
             ;;
         *)
-            awk '{split,fr,","); if(fr[1] + 0 <= 19 && fr[1] + 0 >= 11 && fr[2] + 0 >= -66 && fr[2] + 0 <= -58) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($5,fr,","); if(fr[1] + 0 <= 19 && fr[1] + 0 >= 11 && fr[2] + 0 >= -66 && fr[2] + 0 <= -58) print $0;}' FS=";" $file >cut_c.csv
             ;;
         esac
 
@@ -783,10 +783,10 @@ trait_argument_d_country() {
             awk '{split($3,fr,","); if(fr[1] + 0 <= -60) print $0;}' FS=";" $file >cut_c.csv
             ;;
         4)
-            awk '{split($5,fr,","); if(fr[1] + 0 <= -60) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($4,fr,","); if(fr[1] + 0 <= -60) print $0;}' FS=";" $file >cut_c.csv
             ;;
         *)
-            awk '{split,fr,","); if(fr[1] + 0 <= -60) print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($5,fr,","); if(fr[1] + 0 <= -60) print $0;}' FS=";" $file >cut_c.csv
             ;;
         esac
 
@@ -802,10 +802,10 @@ trait_argument_d_country() {
             awk '{split($3,fr,",");if(fr[1] + 0 >= -55 && fr[1] + 0 <= 22 && fr[2] + 0 > 21 && fr[2] + 0 <= 132)  print $0;}' FS=";" $file >cut_c.csv
             ;;
         4)
-            awk '{split($5,fr,",");if(fr[1] + 0 >= -55 && fr[1] + 0 <= 22 && fr[2] + 0 > 21 && fr[2] + 0 <= 132)  print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($4,fr,",");if(fr[1] + 0 >= -55 && fr[1] + 0 <= 22 && fr[2] + 0 > 21 && fr[2] + 0 <= 132)  print $0;}' FS=";" $file >cut_c.csv
             ;;
         *)
-            awk '{split,fr,",");if(fr[1] + 0 >= -55 && fr[1] + 0 <= 22 && fr[2] + 0 > 21 && fr[2] + 0 <= 132)  print $0;}' FS=";" $file >cut_c.csv
+            awk '{split($5,fr,",");if(fr[1] + 0 >= -55 && fr[1] + 0 <= 22 && fr[2] + 0 > 21 && fr[2] + 0 <= 132)  print $0;}' FS=";" $file >cut_c.csv
             ;;
         esac
 
@@ -922,7 +922,7 @@ check_argument() {
         #pressure
         p)
             if [ "$OPTARG" != "1" ] && [ "$OPTARG" != "2" ] && [ "$OPTARG" != "3" ]; then
-                echo"p option argument must be 1 2 or 3"
+                echo "p option argument must be 1 2 or 3"
                 exit 1
             fi
 
@@ -943,7 +943,7 @@ check_argument() {
         #temperature
         t)
             if [ "$OPTARG" != "1" ] && [ "$OPTARG" != "2" ] && [ "$OPTARG" != "3" ]; then
-                echo"t option argument must be 1 2 or 3"
+                echo "t option argument must be 1 2 or 3"
                 exit 1
             fi
             if [ ! $(grep "TEMPÉRATURE(°C)" check_field.csv) ] || [ ! $(grep "TEMPÉRATUREMINIMALESUR24HEURES(°C)" check_field.csv) ] || [ ! $(grep "TEMPÉRATUREMAXIMALESUR24HEURES(°C)" check_field.csv) ]; then
@@ -990,7 +990,7 @@ check_argument() {
                 cat README.md #help
                 ;;
             *)
-                echo"-- option argument must be avl, abr, help or tab"
+                echo "-- option argument must be avl, abr, help or tab"
                 exit 1
                 ;;
             esac
@@ -1084,4 +1084,6 @@ check_argument() {
 make -f Makefile.mak
 check_argument $@
 rm check_field.csv
+
+
 
