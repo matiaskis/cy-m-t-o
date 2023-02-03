@@ -24,8 +24,7 @@ possible :
             (optionnal)
            
            --avl sort the data using a avl tree
-           --abr sort the data using a binary search tree
-           --tab sort the data using a linked list 
+           --abr sort the data using a binary search tree 
            (if this option is not specified, the sorting will be done with an avl tree by default)
            
            --help if you need specification on the arguments 
