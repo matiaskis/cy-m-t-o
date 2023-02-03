@@ -49,7 +49,7 @@ trait_argument_abr() {
         rm station_height2.csv #remove the file
 
         gnuplot "height.gnu"
-        xdg -open "height.png"
+        xdg-open "height.png"
         rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
@@ -369,7 +369,7 @@ trait_argument_avl() {
         rm station_height2.csv #remove the file
 
          gnuplot "height.gnu"
-        xdg -open "height.png"
+        xdg-open "height.png"
         rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
