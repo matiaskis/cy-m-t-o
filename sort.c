@@ -11,13 +11,13 @@
 #include "abrh.h"
 #include "abr2.h"
 #include "abr3.h"
-#include "abrM.h"
+#include "abrm.h"
 #include "abrA.h"
 #include "sort.h"
-void sort_tab(int sort_option,int display_option,int sort_option2,File* data_file,File* output_file){
-    printf("pouloulou")
+void sort_tab(int sort_option,int display_option,int sort_option2,FILE* data_file,FILE* output_file){
+    printf("pouloulou");
 }
-void sort_abr(int sort_option,int display_option,int sort_option2,File* data_file,File* output_file){
+void sort_abr(int sort_option,int display_option,int sort_option2,FILE* data_file,FILE* output_file){
 
     int station; 
     float associated_data,associated_data2; 
@@ -32,7 +32,7 @@ void sort_abr(int sort_option,int display_option,int sort_option2,File* data_fil
         while (fscanf(data_file,"%d;",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data1.station=station;
-            data1.associated_Data1=associated_data; 
+            data1.associated_data=associated_data; 
             a1=insertionMax_abr1(a1,data1);
         }
         if(display_option==1){
@@ -49,7 +49,7 @@ void sort_abr(int sort_option,int display_option,int sort_option2,File* data_fil
         while (fscanf(data_file,"%d;",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data1.station=station;
-            data1.associated_Data1=associated_data;
+            data1.associated_data=associated_data;
             a1=insertionMin_abr1(a1,data1);
         }
         if(display_option==1){
@@ -66,7 +66,7 @@ void sort_abr(int sort_option,int display_option,int sort_option2,File* data_fil
         while (fscanf(data_file,"%d;",&station) == 1){
             fscanf(data_file,"%f",&associated_data);
             data1.station=station;
-            data1.associated_Data1=associated_data;
+            data1.associated_data=associated_data;
             a1=insertionAverage_abr1(a1,data1);
         }
         calculateAverage_abr1(a1);
@@ -104,8 +104,8 @@ void sort_abr(int sort_option,int display_option,int sort_option2,File* data_fil
 
          while (fscanf(data_file,"%ld;",&date) == 1){
             fscanf(data_file,"%f",&associated_data);
-            data2.date2=date;
-            data2.associated_Data2=associated_data;
+            data2.date=date;
+            data2.associated_data=associated_data;
             a2=insertionAverage_abr2(a2,data2);
         }
         calculateAverage_abr2(a2);
@@ -123,10 +123,10 @@ void sort_abr(int sort_option,int display_option,int sort_option2,File* data_fil
          while (fscanf(data_file,"%d;",&station ) == 1){
             fscanf(data_file,"%ld;",&date);
             fscanf(data_file,"%f",&associated_data);
-            data3.date3=date;
+            data3.date=date;
             data3.station=station;
-            data3.associated_Data3=associated_data;
-            a3=insertionABR_oabr3(a3,data3);
+            data3.associated_data=associated_data;
+            a3=insertion_oabr3(a3,data3);
         }
 
         if(display_option==1){
@@ -198,14 +198,14 @@ void sort_abr(int sort_option,int display_option,int sort_option2,File* data_fil
         }
         calculateAverage_abra(aa);
         if(display_option==1){
-            infixPathA_abra(aa,output_file);
+            infixPath_abra(aa,output_file);
         }
-        else infixPathRA_abra(aa,output_file);
+        else infixPathR_abra(aa,output_file);
     }  
 
 
 }
-void sort_avl(int sort_option,int display_option,int sort_option2,File* data_file,File* output_file){
+void sort_avl(int sort_option,int display_option,int sort_option2,FILE* data_file,FILE* output_file){
 
     int h;
     int station; 
