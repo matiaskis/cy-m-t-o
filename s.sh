@@ -162,7 +162,12 @@ trait_argument_abr() {
         fi
         rm station_pres_ave2.csv
 
-        #fini sauf gnuplot
+        
+        gnuplot "p1.gnu"
+        xdg-open "p1.png" &2>/dev/null
+        rm gnuplot_pres_ave.csv
+        rm gnuplot_pres_min.csv
+        rm gnuplot_pres_max.csv
     #---------------------------------------------------------------pressure mode 2------------------------------------------------------------------
     elif [ $9 -eq 2 ]; then
         field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" check_field.csv)
@@ -484,7 +489,11 @@ trait_argument_avl() {
         fi
         rm station_pres_ave2.csv
 
-        #fini sauf gnuplot
+         gnuplot "p1.gnu"
+        xdg-open "p1.png" &2>/dev/null
+        rm gnuplot_pres_ave.csv
+        rm gnuplot_pres_min.csv
+        rm gnuplot_pres_max.csv
     #---------------------------------------------------------------pressure mode 2------------------------------------------------------------------
     elif [ $9 -eq 2 ]; then
         field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" check_field.csv)
