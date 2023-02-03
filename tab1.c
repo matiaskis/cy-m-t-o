@@ -112,7 +112,7 @@ int main(int argc, char * argv[]){
     FILE* data_file=fopen(argv[1],"r+");
     FILE* output_file=fopen(argv[2],"w");
     while(fscanf(data_file,"%d;",&station) == 1 ){
-        fscanf(data_file,"%f",&temp) == 1;
+        fscanf(data_file,"%f",&temp);
         e.station=station;
         e.temp_ave=temp;
         e.temp_max=temp;
