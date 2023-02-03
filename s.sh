@@ -199,7 +199,10 @@ trait_argument_abr() {
         fi
         rm c_date.csv
 
-        #gnuplot
+        gnuplot "p2.gnu"
+        xdg-open "p2.png" &2>/dev/null
+        rm gnuplot_pres_date.csv
+   
     #---------------------------------------------------------------pressure mode 3------------------------------------------------------------------
     elif [ $9 -eq 3 ]; then
 
@@ -304,7 +307,9 @@ trait_argument_abr() {
             ./exec c_date.csv gnuplot_temp_date.csv 5 1 2
         fi
         rm c_date.csv
-        #gnuplot
+        gnuplot "t2.gnu"
+        xdg-open "t2.png" &2>/dev/null
+        rm gnuplot_temp_date.csv
 
     #---------------------------------------------------------------temperature mode 3------------------------------------------------------------------ 
     elif [ ${@: -1} -eq 3 ]; then
@@ -527,7 +532,9 @@ trait_argument_avl() {
         fi
         rm c_date.csv
 
-        #gnuplot
+        gnuplot "p2.gnu"
+        xdg-open "p2.png" &2>/dev/null
+        rm gnuplot_pres_date.csv
     #---------------------------------------------------------------pressure mode 3------------------------------------------------------------------
     elif [ $9 -eq 3 ]; then
 
@@ -632,7 +639,9 @@ trait_argument_avl() {
             ./exec c_date.csv gnuplot_temp_date.csv 5 1 1
         fi
         rm c_date.csv
-        #gnuplot
+        gnuplot "t2.gnu"
+        xdg-open "t2.png" &2>/dev/null
+        rm gnuplot_temp_date.csv
 
     #---------------------------------------------------------------temperature mode 3------------------------------------------------------------------ 
     elif [ ${@: -1} -eq 3 ]; then
