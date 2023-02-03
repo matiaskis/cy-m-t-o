@@ -122,8 +122,9 @@ trait_argument_abr() {
             ./exec station_wind2.csv gnuplot_wind.csv 8 1 2
         fi
         rm station_wind2.csv
-        #amner longitude et lattitude
-        #gnuplot
+        gnuplot "wind.gnu"
+        xdg-open "wind.png" &2>/dev/null
+        rm gnuplot_wind.csv
     fi
     #---------------------------------------------------------------pressure mode 1------------------------------------------------------------------
     if [ $9 -eq 1 ]; then
@@ -444,8 +445,9 @@ trait_argument_avl() {
             ./exec station_wind2.csv gnuplot_wind.csv 8 1 1
         fi
         rm station_wind2.csv
-        #amner longitude et lattitude
-        #gnuplot
+        gnuplot "wind.gnu"
+        xdg-open "wind.png" &2>/dev/null
+        rm gnuplot_wind.csv
     fi
     #---------------------------------------------------------------pressure mode 1------------------------------------------------------------------
     if [ $9 -eq 1 ]; then
