@@ -41,7 +41,7 @@ trait_argument_abr() {
         cut -d';' -f$field_station,$field_height,$field_coo cut_c.csv >station_height2.csv #cut the file after the cut of user and cut according to the sort
 
         rm cut_c.csv #remove the file
-        if [ $5 -eq 1 ]; then #if the user choice reverse
+        if [ $4 -eq 1 ]; then #if the user choice reverse
             ./exec station_height2.csv gnuplot_height.csv 4 1 2
         else
             ./exec station_height2.csv gnuplot_height.csv 4 2 2 #execute the programm
@@ -72,13 +72,13 @@ trait_argument_abr() {
         cut -d';' -f$field_station,$field_moisture,$field_coo cut_c.csv >station_m2.csv
 
         rm cut_c.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_m2.csv station_m.csv 7 1 2 1 #execute the programm in the fisrt time to have the max of the station
         else
             ./exec station_m2.csv station_m.csv 7 2 2 1
         fi
         rm station_m2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_m.csv gnuplot_m.csv 7 1 2 0 #execute the programm in the second time with the output of the first programm to sort the avl
         else
             ./exec station_m.csv gnuplot_m.csv 7 2 2 0
@@ -112,7 +112,7 @@ trait_argument_abr() {
         cut -d';' -f$field_station,$field_wind1,$field_wind2,$field_coo cut_c.csv >station_wind2.csv
 
         rm cut_c.csv
-         if [ $5 -eq 1 ]; then
+         if [ $4 -eq 1 ]; then
             ./exec station_wind2.csv gnuplot_wind.csv 8 2 2
         else
             ./exec station_wind2.csv gnuplot_wind.csv 8 1 2
@@ -144,14 +144,16 @@ trait_argument_abr() {
         cut -d';' -f$field_station,$field_pressure cut_c.csv >station_pres_ave2.csv
 
         rm cut_c.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_pres_ave2.csv gnuplot_pres_ave.csv 3 2 2
             ./exec station_pres_ave2.csv gnuplot_pres_min.csv 2 2 2
             ./exec station_pres_ave2.csv gnuplot_pres_max.csv 1 2 2
+
         else
             ./exec station_pres_ave2.csv gnuplot_pres_ave.csv 3 1 2
             ./exec station_pres_ave2.csv gnuplot_pres_min.csv 2 1 2
             ./exec station_pres_ave2.csv gnuplot_pres_max.csv 1 1 2
+          
         fi
         rm station_pres_ave2.csv
 
@@ -180,7 +182,7 @@ trait_argument_abr() {
 
         awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";" pres_date2.csv >c_date.csv #cut les dates
         rm pres_date2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec c_date.csv gnuplot_pres_date.csv 5 2 2
         else
             ./exec c_date.csv gnuplot_pres_date.csv 5 1 2
@@ -215,7 +217,7 @@ trait_argument_abr() {
         awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_pres_date2.csv >pres_date3.csv
 
         rm station_pres_date2.csv
-         if [ $5 -eq 1 ]; then
+         if [ $4 -eq 1 ]; then
             ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 2 2
         else
             ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 1 2
@@ -245,7 +247,7 @@ trait_argument_abr() {
         trait_argument_d_country $2 $3 $5 station_temp_ave.csv $field_date $field_coo
         cut -d';' -f$field_station,$field_temp cut_c.csv >station_temp_ave2.csv
         rm cut_c.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_temp_ave2.csv gnuplot_temp_ave.csv 3 2 2
             ./exec station_temp_ave2.csv gnuplot_temp_min.csv 2 2 2
             ./exec station_temp_ave2.csv gnuplot_temp_max.csv 1 2 2
@@ -284,7 +286,7 @@ trait_argument_abr() {
 
         awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";" temp_date2.csv >c_date.csv #concaténer
         rm temp_date2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec c_date.csv gnuplot_temp_date.csv 5 2 2
         else
             ./exec c_date.csv gnuplot_temp_date.csv 5 1 2
@@ -318,7 +320,7 @@ trait_argument_abr() {
 
         awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_temp_date2.csv >temp_date3.csv
         rm station_temp_date2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 2 2
         else
             ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 1 2
@@ -357,7 +359,7 @@ trait_argument_avl() {
         cut -d';' -f$field_station,$field_height,$field_coo cut_c.csv >station_height2.csv #cut the file after the cut of user and cut according to the sort
 
         rm cut_c.csv #remove the file
-        if [ $5 -eq 1 ]; then #if the user choice reverse
+        if [ $4 -eq 1 ]; then #if the user choice reverse
             ./exec station_height2.csv gnuplot_height.csv 4 1 1
         else
             ./exec station_height2.csv gnuplot_height.csv 4 2 1 #execute the programm
@@ -388,13 +390,13 @@ trait_argument_avl() {
         cut -d';' -f$field_station,$field_moisture,$field_coo cut_c.csv >station_m2.csv
 
         rm cut_c.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_m2.csv station_m.csv 7 1 1 1 #execute the programm in the fisrt time to have the max of the station
         else
             ./exec station_m2.csv station_m.csv 7 2 1 1
         fi
         rm station_m2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_m.csv gnuplot_m.csv 7 1 1 0 #execute the programm in the second time with the output of the first programm to sort the avl
         else
             ./exec station_m.csv gnuplot_m.csv 7 2 1 0
@@ -428,7 +430,7 @@ trait_argument_avl() {
         cut -d';' -f$field_station,$field_wind1,$field_wind2,$field_coo cut_c.csv >station_wind2.csv
 
         rm cut_c.csv
-         if [ $5 -eq 1 ]; then
+         if [ $4 -eq 1 ]; then
             ./exec station_wind2.csv gnuplot_wind.csv 8 2 1
         else
             ./exec station_wind2.csv gnuplot_wind.csv 8 1 1
@@ -460,14 +462,15 @@ trait_argument_avl() {
         cut -d';' -f$field_station,$field_pressure cut_c.csv >station_pres_ave2.csv
 
         rm cut_c.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_pres_ave2.csv gnuplot_pres_ave.csv 3 2 1
             ./exec station_pres_ave2.csv gnuplot_pres_min.csv 2 2 1
             ./exec station_pres_ave2.csv gnuplot_pres_max.csv 1 2 1
         else
-            ./exec station_pres_ave2.csv gnuplot_pres_ave.csv 3 1 1
-            ./exec station_pres_ave2.csv gnuplot_pres_min.csv 2 1 1
-            ./exec station_pres_ave2.csv gnuplot_pres_max.csv 1 1 1
+            ./exec station_pres_ave2.csv gnuplot_pres_ave.csv 3 1 2
+            ./exec station_pres_ave2.csv gnuplot_pres_min.csv 2 1 2
+            ./exec station_pres_ave2.csv gnuplot_pres_max.csv 1 1 2
+           
         fi
         rm station_pres_ave2.csv
 
@@ -496,7 +499,7 @@ trait_argument_avl() {
 
         awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";" pres_date2.csv >c_date.csv #cut les dates
         rm pres_date2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec c_date.csv gnuplot_pres_date.csv 5 2 1
         else
             ./exec c_date.csv gnuplot_pres_date.csv 5 1 1
@@ -531,7 +534,7 @@ trait_argument_avl() {
         awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_pres_date2.csv >pres_date3.csv
 
         rm station_pres_date2.csv
-         if [ $5 -eq 1 ]; then
+         if [ $4 -eq 1 ]; then
             ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 2 1
         else
             ./exec pres_date3.csv gnuplot_station_pres_date.csv 6 1 1
@@ -561,7 +564,7 @@ trait_argument_avl() {
         trait_argument_d_country $2 $3 $5 station_temp_ave.csv $field_date $field_coo
         cut -d';' -f$field_station,$field_temp cut_c.csv >station_temp_ave2.csv
         rm cut_c.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec station_temp_ave2.csv gnuplot_temp_ave.csv 3 2 1
             ./exec station_temp_ave2.csv gnuplot_temp_min.csv 2 2 1
             ./exec station_temp_ave2.csv gnuplot_temp_max.csv 1 2 1
@@ -600,7 +603,7 @@ trait_argument_avl() {
 
         awk '{split($1,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print all";"$2;}' FS=";" temp_date2.csv >c_date.csv #concaténer
         rm temp_date2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec c_date.csv gnuplot_temp_date.csv 5 2 1
         else
             ./exec c_date.csv gnuplot_temp_date.csv 5 1 1
@@ -634,7 +637,7 @@ trait_argument_avl() {
 
         awk '{split($2,ddate,"T") ; split(ddate[1],fdate,"-"); split(ddate[2],hdate,":"); if(hdate[1] < 10) hdate[1]=sprintf("0%d", hdate[1]);  all=sprintf("%d%s%s%s", fdate[1], fdate[2], fdate[3], hdate[1]);   print $1";"all";"$3;}' FS=";" station_temp_date2.csv >temp_date3.csv
         rm station_temp_date2.csv
-        if [ $5 -eq 1 ]; then
+        if [ $4 -eq 1 ]; then
             ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 2 1
         else
             ./exec temp_date3.csv gnuplot_station_temp_date.csv 6 1 1
@@ -1071,9 +1074,9 @@ check_argument() {
     if [ $sort -eq 3 ]; then
         trait_argument_tab $file $d $allchoice $r $x $h $m $w $p $t
     elif [ $sort -eq 2 ]; then
-        trait_argument_abr $file $d $choice1 $choice2 $x $h $m $w $p $t
+        trait_argument_abr $file $d $allchoice $r $x $h $m $w $p $t
     else
-        trait_argument_avl $file $d $choice1 $choice2 $x $h $m $w $p $t
+        trait_argument_avl $file $d $allchoice $r $x $h $m $w $p $t
     fi
 
 }
@@ -1081,3 +1084,4 @@ check_argument() {
 make -f Makefile.mak
 check_argument $@
 rm check_field.csv
+
