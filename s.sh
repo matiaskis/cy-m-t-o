@@ -168,6 +168,7 @@ trait_argument_abr() {
         rm gnuplot_pres_ave.csv
         rm gnuplot_pres_min.csv
         rm gnuplot_pres_max.csv
+    fi
     #---------------------------------------------------------------pressure mode 2------------------------------------------------------------------
     elif [ $9 -eq 2 ]; then
         field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" check_field.csv)
@@ -202,6 +203,7 @@ trait_argument_abr() {
         gnuplot "p2.gnu"
         xdg-open "p2.png" 2 > /dev/null
         rm gnuplot_pres_date.csv
+    fi
    
     #---------------------------------------------------------------pressure mode 3------------------------------------------------------------------
     elif [ $9 -eq 3 ]; then
@@ -279,6 +281,7 @@ trait_argument_abr() {
         rm gnuplot_temp_ave.csv
         rm gnuplot_temp_min.csv
         rm gnuplot_temp_max.csv
+    fi
 
     #---------------------------------------------------------------temperature mode 2------------------------------------------------------------------
     elif [ ${@: -1} -eq 2 ]; then
@@ -312,6 +315,7 @@ trait_argument_abr() {
         gnuplot "t2.gnu"
         xdg-open "t2.png" 2 > /dev/null
         rm gnuplot_temp_date.csv
+    fi
 
     #---------------------------------------------------------------temperature mode 3------------------------------------------------------------------ 
     elif [ ${@: -1} -eq 3 ]; then
@@ -505,6 +509,7 @@ trait_argument_avl() {
         rm gnuplot_pres_ave.csv
         rm gnuplot_pres_min.csv
         rm gnuplot_pres_max.csv
+    fi
     #---------------------------------------------------------------pressure mode 2------------------------------------------------------------------
     elif [ $9 -eq 2 ]; then
         field_pressure=$(awk '{for(i=1;i<=NF;i++)if($i == "PRESSIONSTATION")print i;}' FS=";" check_field.csv)
@@ -539,6 +544,7 @@ trait_argument_avl() {
         gnuplot "p2.gnu"
         xdg-open "p2.png" 2 > /dev/null
         rm gnuplot_pres_date.csv
+    fi
     #---------------------------------------------------------------pressure mode 3------------------------------------------------------------------
     elif [ $9 -eq 3 ]; then
 
@@ -616,6 +622,7 @@ trait_argument_avl() {
         rm gnuplot_temp_ave.csv
         rm gnuplot_temp_min.csv
         rm gnuplot_temp_max.csv
+    fi
 
     #---------------------------------------------------------------temperature mode 2------------------------------------------------------------------
     elif [ ${@: -1} -eq 2 ]; then
@@ -649,6 +656,7 @@ trait_argument_avl() {
         gnuplot "t2.gnu"
         xdg-open "t2.png" 2 > /dev/null
         rm gnuplot_temp_date.csv
+    fi
 
     #---------------------------------------------------------------temperature mode 3------------------------------------------------------------------ 
     elif [ ${@: -1} -eq 3 ]; then
