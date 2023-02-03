@@ -49,7 +49,7 @@ trait_argument_abr() {
         rm station_height2.csv #remove the file
 
         gnuplot "height.gnu"
-        xdg-open "height.png" &2>/dev/null #avoid the warning
+        xdg-open "height.png" 2 > /dev/null #avoid the warning
         rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
@@ -88,7 +88,7 @@ trait_argument_abr() {
         rm station_m.csv
 
         gnuplot "moisture.gnu"
-        xdg-open "moisture.png" &2>/dev/null
+        xdg-open "moisture.png" & 2 >/dev/null
         rm gnuplot_m.csv
 
     fi
@@ -123,7 +123,7 @@ trait_argument_abr() {
         fi
         rm station_wind2.csv
         gnuplot "wind.gnu"
-        xdg-open "wind.png" &2>/dev/null
+        xdg-open "wind.png" 2 > /dev/null
         rm gnuplot_wind.csv
     fi
     #---------------------------------------------------------------pressure mode 1------------------------------------------------------------------
@@ -164,7 +164,7 @@ trait_argument_abr() {
 
         
         gnuplot "p1.gnu"
-        xdg-open "p1.png" &2>/dev/null
+        xdg-open "p1.png" 2 > /dev/null
         rm gnuplot_pres_ave.csv
         rm gnuplot_pres_min.csv
         rm gnuplot_pres_max.csv
@@ -200,7 +200,7 @@ trait_argument_abr() {
         rm c_date.csv
 
         gnuplot "p2.gnu"
-        xdg-open "p2.png" &2>/dev/null
+        xdg-open "p2.png" 2 > /dev/null
         rm gnuplot_pres_date.csv
    
     #---------------------------------------------------------------pressure mode 3------------------------------------------------------------------
@@ -237,7 +237,7 @@ trait_argument_abr() {
         fi
         rm pres_date3.csv
         gnuplot "p3.gnu"
-        xdg-open "p3.png" &2>/dev/null
+        xdg-open "p3.png" 2 >/dev/null
         rm gnuplot_station_pres_date.csv
     fi
     #---------------------------------------------------------------temperature mode 1------------------------------------------------------------------
@@ -275,7 +275,7 @@ trait_argument_abr() {
         rm station_temp_ave2.csv
 
          gnuplot "t1.gnu"
-        xdg-open "t1.png" &2>/dev/null
+        xdg-open "t1.png" 2 > /dev/null
         rm gnuplot_temp_ave.csv
         rm gnuplot_temp_min.csv
         rm gnuplot_temp_max.csv
@@ -310,7 +310,7 @@ trait_argument_abr() {
         fi
         rm c_date.csv
         gnuplot "t2.gnu"
-        xdg-open "t2.png" &2>/dev/null
+        xdg-open "t2.png" 2 > /dev/null
         rm gnuplot_temp_date.csv
 
     #---------------------------------------------------------------temperature mode 3------------------------------------------------------------------ 
@@ -346,7 +346,7 @@ trait_argument_abr() {
         fi
         rm temp_date3.csv
            gnuplot "t3.gnu"
-        xdg-open "t3.png" &2>/dev/null
+        xdg-open "t3.png" 2 > /dev/null
         rm gnuplot_station_temp_date.csv
 
     fi
@@ -388,7 +388,7 @@ trait_argument_avl() {
         rm station_height2.csv #remove the file
 
          gnuplot "height.gnu"
-        xdg-open "height.png" &2>/dev/null #avoid the warning
+        xdg-open "height.png" 2 > /dev/null #avoid the warning
         rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
@@ -427,7 +427,7 @@ trait_argument_avl() {
         rm station_m.csv
 
        gnuplot "moisture.gnu"
-        xdg-open "moisture.png" &2>/dev/null
+        xdg-open "moisture.png" 2 > /dev/null
         rm gnuplot_m.csv
 
     fi
@@ -462,7 +462,7 @@ trait_argument_avl() {
         fi
         rm station_wind2.csv
         gnuplot "wind.gnu"
-        xdg-open "wind.png" &2>/dev/null
+        xdg-open "wind.png" 2 > /dev/null
         rm gnuplot_wind.csv
     fi
     #---------------------------------------------------------------pressure mode 1------------------------------------------------------------------
@@ -501,7 +501,7 @@ trait_argument_avl() {
         rm station_pres_ave2.csv
 
          gnuplot "p1.gnu"
-        xdg-open "p1.png" &2>/dev/null
+        xdg-open "p1.png" 2 > /dev/null
         rm gnuplot_pres_ave.csv
         rm gnuplot_pres_min.csv
         rm gnuplot_pres_max.csv
@@ -537,7 +537,7 @@ trait_argument_avl() {
         rm c_date.csv
 
         gnuplot "p2.gnu"
-        xdg-open "p2.png" &2>/dev/null
+        xdg-open "p2.png" 2 > /dev/null
         rm gnuplot_pres_date.csv
     #---------------------------------------------------------------pressure mode 3------------------------------------------------------------------
     elif [ $9 -eq 3 ]; then
@@ -574,7 +574,7 @@ trait_argument_avl() {
         rm pres_date3.csv
         
            gnuplot "p3.gnu"
-        xdg-open "p3.png" &2>/dev/null
+        xdg-open "p3.png" 2 > /dev/null
         rm gnuplot_station_pres_date.csv
     fi
     #---------------------------------------------------------------temperature mode 1------------------------------------------------------------------
@@ -612,7 +612,7 @@ trait_argument_avl() {
         rm station_temp_ave2.csv
 
        gnuplot "t1.gnu"
-        xdg-open "t1.png" &2>/dev/null
+        xdg-open "t1.png" 2 > /dev/null
         rm gnuplot_temp_ave.csv
         rm gnuplot_temp_min.csv
         rm gnuplot_temp_max.csv
@@ -647,7 +647,7 @@ trait_argument_avl() {
         fi
         rm c_date.csv
         gnuplot "t2.gnu"
-        xdg-open "t2.png" &2>/dev/null
+        xdg-open "t2.png" 2 > /dev/null
         rm gnuplot_temp_date.csv
 
     #---------------------------------------------------------------temperature mode 3------------------------------------------------------------------ 
@@ -683,7 +683,7 @@ trait_argument_avl() {
         fi
         rm temp_date3.csv
            gnuplot "t3.gnu"
-        xdg-open "t3.png" &2>/dev/null
+        xdg-open "t3.png" 2 > /dev/null
         rm gnuplot_station_temp_date.csv
 
     fi
