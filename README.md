@@ -10,7 +10,7 @@ possible :
            -w wind map for each station
            -h height per station
            -m moisture per station
-           (there are no limitations for these options, you can put more than one at a time but you need at least one) 
+           (you can only put one option and u need at least one) 
            
            -F metropolitan france and corsica
            -G French Guiana
