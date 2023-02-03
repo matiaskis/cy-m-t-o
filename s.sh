@@ -48,7 +48,9 @@ trait_argument_abr() {
         fi
         rm station_height2.csv #remove the file
 
-        #fini sauf gnuplot
+        gnuplot "height.gnu"
+        xdg -open "height.png"
+        rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
     if [ $7 -eq 1 ]; then
@@ -366,7 +368,9 @@ trait_argument_avl() {
         fi
         rm station_height2.csv #remove the file
 
-        #fini sauf gnuplot
+         gnuplot "height.gnu"
+        xdg -open "height.png"
+        rm gnuplot_height.csv
     fi
     #---------------------------------------------------------------moisture------------------------------------------------------------------
     if [ $7 -eq 1 ]; then
