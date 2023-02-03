@@ -26,10 +26,9 @@ int main(int argc, char* argv[]){
     if(sort_technique == 1){
         sort_avl(sort_option,display_option,sort_option2,data_file,output_file);
     }
-    else if (sort_technique == 2){
-        sort_abr(sort_option,display_option,sort_option2,data_file,output_file);
-    }
-    else sort_tab(sort_option,display_option,sort_option2,data_file,output_file);
+    else    sort_abr(sort_option,display_option,sort_option2,data_file,output_file);
+    
+    
 
     
 
