@@ -24,6 +24,8 @@ possible :
            -d the output graph will be between two given dates of this format : YYYY/MM/DD
             (optionnal)
            
+           -r to sort the data in reverse
+           
            --avl sort the data using a avl tree
            --abr sort the data using a binary search tree 
            (if this option is not specified, the sorting will be done with an avl tree by default)
