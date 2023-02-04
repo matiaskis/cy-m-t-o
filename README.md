@@ -7,10 +7,11 @@ possible :
            -t2 average temperature per date on every station 
            -p2 average pressure per date on every station 
            -t3 every temperature per date then per station
+           (you can only put one option and u need at least one)
            -w wind map for each station
            -h height per station
            -m moisture per station
-           (you can only put one option and u need at least one) 
+           (there are no limitation for these options) 
            
            -F metropolitan france and corsica
            -G French Guiana
@@ -38,7 +39,7 @@ The shell script then uses gnuplot to create graphics.
 
            
 to execute the programm : ./s.sh -f input_file <option> <option>
-for exemple : ./s.sh -f input_file -p1 --avl -d 2012/03/24,2017/05/12
+for exemple : ./s.sh -f input_file -p1 --avl -d 2012/03/24,2017/05/12 -F
 (there is no order for the specified options)
            
 
