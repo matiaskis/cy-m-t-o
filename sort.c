@@ -14,7 +14,135 @@
 #include "abrm.h"
 #include "abrA.h"
 #include "sort.h"
+#include "tab1.h"
+#include "tabh.h"
+#include "tabw.h"
+#include "tabm.h"
 
+
+void sort_tab(int sort_option,int sort_option2,FILE* data_file,FILE* output_file){
+    
+    int station;
+    float wind1,wind2;
+    float latitude,longitude;
+    float temp;
+    int height;
+    int moisture;
+
+    //sort T1 P1
+    if (sort_option == 1){                   
+        Data_tab1 e;
+        LinkedList * pList=NULL;
+   
+        while(fscanf(data_file,"%d;",&station) == 1 ){
+            fscanf(data_file,"%f",&temp);
+            e.station=station;
+            e.temp_ave=temp;
+            e.temp_max=temp;
+            e.temp_min=temp;
+            
+            pList=insertionTab1(pList,e);
+            
+        }
+        
+        calculateAverageTab1(pList);
+        treatList(pList,output_file);
+    }
+    //sort wind
+    else if(sort_option==2){
+
+        LinkedListw * pList=NULL;
+        Data_tabw e;
+        
+    
+        while(fscanf(data_file,"%d;",&station) == 1 ){
+            fscanf(data_file,"%f;",&wind1);
+            fscanf(data_file,"%f;",&wind2);
+            fscanf(data_file,"%f,",&latitude);
+            fscanf(data_file,"%f",&longitude);
+            e.station=station;
+            e.wind1_ave=wind1;
+            e.wind2_ave=wind2;
+            e.latitude=latitude;
+            e.longitude=longitude;
+            
+            pList=insertionTabw(pList,e);
+            
+        }
+        
+        calculateAverageTabw(pList);
+        treatListw(pList,output_file);
+    }
+    //sort height
+    else if(sort_option==3){         
+        Data_tabh e;
+        LinkedListh * pList=NULL;
+        
+        while(fscanf(data_file,"%d;",&station) == 1 ){          
+            fscanf(data_file,"%f,",&latitude);
+            fscanf(data_file,"%f;",&longitude);
+            fscanf(data_file,"%d",&height);
+
+            e.station=station;
+            e.height=height;
+            e.latitude=latitude;
+            e.longitude=longitude;
+            
+            pList=insertionTabh(pList,e);
+            
+        }
+        
+        
+        treatListh(pList,output_file);
+    }
+    //sort moisture
+    else{
+        Data_tabm e;
+        LinkedListm * pList=NULL;
+
+        if(sort_option2==1){   
+            while(fscanf(data_file,"%d;",&station) == 1 ){
+                fscanf(data_file,"%d;",&moisture);
+                fscanf(data_file,"%f,",&latitude);
+                fscanf(data_file,"%f",&longitude);
+
+                e.station=station;
+                e.moisture=moisture;
+                e.latitude=latitude;
+                e.longitude=longitude;
+                
+                pList=insertionTabMAXm(pList,e);
+            
+            }
+            
+            
+            treat_tabm2(pList,output_file);
+
+        }
+        else {
+            while(fscanf(data_file,"%d;",&station) == 1 ){
+                fscanf(data_file,"%d;",&moisture);
+                fscanf(data_file,"%f,",&latitude);
+                fscanf(data_file,"%f",&longitude);
+
+                e.station=station;
+                e.moisture=moisture;
+                e.latitude=latitude;
+                e.longitude=longitude;
+                
+                pList=insertionTabm(pList,e);
+            
+            }
+            
+            
+            treat_tabm(pList,output_file);
+
+        }
+
+
+    }
+
+}
 void sort_abr(int sort_option,int display_option,int sort_option2,FILE* data_file,FILE* output_file){
 
     int station; 
