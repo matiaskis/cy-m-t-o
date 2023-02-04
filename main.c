@@ -3,12 +3,17 @@
 #include <string.h>
 #include "sort.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "sort.h"
+
 int main(int argc, char* argv[]){
     
     int sort_option=atoi(argv[3]);
     int display_option=atoi(argv[4]);
     int sort_technique=atoi(argv[5]);
-    int sort_option2;
+    int sort_option2=0;
     if(argv[6]!=NULL){
         sort_option2=atoi(argv[6]);
     }
@@ -26,9 +31,10 @@ int main(int argc, char* argv[]){
     if(sort_technique == 1){
         sort_avl(sort_option,display_option,sort_option2,data_file,output_file);
     }
-    else    sort_abr(sort_option,display_option,sort_option2,data_file,output_file);
-    
-    
+    else if (sort_technique == 2){
+        sort_abr(sort_option,display_option,sort_option2,data_file,output_file);
+    }
+    else sort_tab(sort_option,sort_option2,data_file,output_file);
 
     
 
@@ -36,4 +42,6 @@ int main(int argc, char* argv[]){
     fclose(output_file);
     return 0;
 }
+
+
 
